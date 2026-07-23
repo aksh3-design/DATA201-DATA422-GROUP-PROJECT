@@ -3,7 +3,7 @@
 ## Team Members
 
 - Aksh Doshi
-- Member 2
-- Member 3
-- Member 4
+- Sophie Dance
+- Rehutai Rapira-Davies
+- Koushika Mani
 
