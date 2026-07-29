@@ -7,4 +7,6 @@ Hi! I'm Sophie, a DATA22 student. This is all super new to me :)
 Hi everyone! i'm koushi. I am a DATA422 student.  
 Hi, I am Aksh doshi and i am DATA201 student.
 
-Hi Team, its 29th July
+Hi Team, its 29th July and its 12:24 pm.
+
+This is Sophie testing if the new branch worked.
