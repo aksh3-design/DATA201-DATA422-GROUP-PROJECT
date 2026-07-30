@@ -7,8 +7,6 @@
 - Rehutai Rapira-Davies
 - Koushika Mani
 
-# Deliverable 2 - NZ June 2026 Dataset
-
 ## Introduction
 
 The [Inside Airbnb](https://insideairbnb.com/get-the-data/) website compiles listing data for a number
