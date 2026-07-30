@@ -59,12 +59,14 @@ Location information for listings are anonymized by Airbnb.
 ### ```room_type``` :
 Categorises rooms into the different types:
 
-| key                       | Definition    |
+| Field                     | Reference     |
 | ------------------------- | ------------- | 
 | ```"Private room"```      | Private rooms |
 | ```"Entire home/apt"```   | Entire Places |
 | ```"Shared room"```       | Shared Rooms  |
 | ```"Hotel room"```        | Hotel Rooms   |
+
+These room types are described in the following, provided by Inside Airbnb following their [assuumptions](https://insideairbnb.com/data-assumptions/).
 
 #### __Entire homes__
 Entire homes are best if you're seeking a home away from home. With an entire place, you'll have the whole space to yourself. This usually includes a bedroom, a bathroom, a kitchen, and a separate, dedicated entrance. Hosts should note in the description if they'll be on the property or not (ex: "Host occupies first floor of the home"), and provide further details on the listing.
@@ -76,12 +78,12 @@ Private rooms are great for when you prefer a little privacy, and still value a 
 Shared rooms are for when you don't mind sharing a space with others. When you book a shared room, you'll be sleeping in a space that is shared with others and share the entire space with other people. Shared rooms are popular among flexible travelers looking for new friends and budget-friendly stays.
 
 ### ```last_review``` :
-If the listing has no reviews, then this field will be __empty.__
+If the listing has no reviews, then the ```last_review``` and ```reviews_per_month``` fields will be __empty__.
 
 ### ```availability_365``` :
 The Airbnb calendar for a listing does not differentiate between a booked night vs an unavailable night, therefore these bookings have been counted as "unavailable". This serves to understate the Availability metric because popular listings will be "booked" rather than being "blacked out" by a host.
 
-#### Sources:
+## Sources:
 
 - [Inside Airbnb - Datasets](https://insideairbnb.com/get-the-data/)
 - [Inside Airbnb - Data Dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?gid=1322284596#gid=1322284596)
