@@ -85,6 +85,6 @@ The Airbnb calendar for a listing does not differentiate between a booked night 
 
 #### Sources:
 
-[Inside Airbnb - Datasets](https://insideairbnb.com/get-the-data/)
-[Inside Airbnb - Data Dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?gid=1322284596#gid=1322284596)
-[Inside Airbnb - Data Assumptions](https://insideairbnb.com/data-assumptions/)
+- [Inside Airbnb - Datasets](https://insideairbnb.com/get-the-data/)
+- [Inside Airbnb - Data Dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?gid=1322284596#gid=1322284596)
+- [Inside Airbnb - Data Assumptions](https://insideairbnb.com/data-assumptions/)
