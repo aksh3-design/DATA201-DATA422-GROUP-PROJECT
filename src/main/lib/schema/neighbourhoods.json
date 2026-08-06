@@ -1,0 +1,575 @@
+[
+    {
+        "Ashburton District": {
+            "neighbourhood_group": "Ashburton District",
+            "Set(neighbourhood)": [
+                "Western Ward",
+                "Ashburton Ward",
+                "Eastern Ward"
+            ]
+        },
+        "Auckland": {
+            "neighbourhood_group": "Auckland",
+            "Set(neighbourhood)": [
+                "Waitākere Ward",
+                "Rodney Ward",
+                "Howick Ward",
+                "Waitematā and Gulf Ward",
+                "Ōrākei Ward",
+                "Albert-Eden-Puketāpapa Ward",
+                "North Shore Ward",
+                "Whau Ward",
+                "Albany Ward",
+                "Franklin Ward",
+                "Maungakiekie-Tāmaki Ward",
+                "Manukau Ward",
+                "Manurewa-Papakura Ward"
+            ]
+        },
+        "Buller District": {
+            "neighbourhood_group": "Buller District",
+            "Set(neighbourhood)": [
+                "Westport Ward",
+                "Seddon Ward",
+                "Inangahua Ward"
+            ]
+        },
+        "Carterton District": {
+            "neighbourhood_group": "Carterton District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Central Hawke's Bay District": {
+            "neighbourhood_group": "Central Hawke's Bay District",
+            "Set(neighbourhood)": [
+                "Aramoana-Ruahine Ward",
+                "Ruataniwha Ward"
+            ]
+        },
+        "Central Otago District": {
+            "neighbourhood_group": "Central Otago District",
+            "Set(neighbourhood)": [
+                "Maniototo Ward",
+                "Cromwell Ward",
+                "Vincent Ward",
+                "Teviot Valley Ward"
+            ]
+        },
+        "Chatham Islands Territory": {
+            "neighbourhood_group": "Chatham Islands Territory",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Christchurch City": {
+            "neighbourhood_group": "Christchurch City",
+            "Set(neighbourhood)": [
+                "Innes Ward",
+                "Banks Peninsula Ward",
+                "Riccarton Ward",
+                "Fendalton Ward",
+                "Halswell Ward",
+                "Heathcote Ward",
+                "Burwood Ward",
+                "Papanui Ward",
+                "Cashmere Ward",
+                "Harewood Ward",
+                "Spreydon Ward",
+                "Coastal Ward",
+                "Linwood Ward",
+                "Central Ward",
+                "Hornby Ward",
+                "Waimairi Ward"
+            ]
+        },
+        "Clutha District": {
+            "neighbourhood_group": "Clutha District",
+            "Set(neighbourhood)": [
+                "Catlins Ward",
+                "Balclutha Ward",
+                "Bruce Ward",
+                "West Otago Ward",
+                "Lawrence-Tuapeka Ward",
+                "Clutha Valley Ward"
+            ]
+        },
+        "Dunedin City": {
+            "neighbourhood_group": "Dunedin City",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Far North District": {
+            "neighbourhood_group": "Far North District",
+            "Set(neighbourhood)": [
+                "Kaikohe-Hokianga Ward",
+                "Bay of Islands-Whangaroa Ward",
+                "Te Hiku Ward"
+            ]
+        },
+        "Gisborne District": {
+            "neighbourhood_group": "Gisborne District",
+            "Set(neighbourhood)": [
+                "Gisborne Ward",
+                "Waipaoa Ward",
+                "Tawhiti-Uawa Ward",
+                "Matakaoa-Waiapu Ward",
+                "Taruheru-Patutahi Ward"
+            ]
+        },
+        "Gore District": {
+            "neighbourhood_group": "Gore District",
+            "Set(neighbourhood)": [
+                "Kaiwera-Waimumu Ward",
+                "Waikaka Ward",
+                "Mataura Ward",
+                "Gore Ward"
+            ]
+        },
+        "Grey District": {
+            "neighbourhood_group": "Grey District",
+            "Set(neighbourhood)": [
+                "Central Ward",
+                "Eastern Ward",
+                "Northern Ward",
+                "Southern Ward"
+            ]
+        },
+        "Hamilton City": {
+            "neighbourhood_group": "Hamilton City",
+            "Set(neighbourhood)": [
+                "East Ward",
+                "West Ward"
+            ]
+        },
+        "Hastings District": {
+            "neighbourhood_group": "Hastings District",
+            "Set(neighbourhood)": [
+                "Heretaunga Ward",
+                "Hastings-Havelock North Ward",
+                "Kahuranaki Ward",
+                "Mohaka Ward",
+                "Flaxmere Ward"
+            ]
+        },
+        "Hauraki District": {
+            "neighbourhood_group": "Hauraki District",
+            "Set(neighbourhood)": [
+                "Paeroa Ward",
+                "Waihi Ward",
+                "Plains Ward"
+            ]
+        },
+        "Horowhenua District": {
+            "neighbourhood_group": "Horowhenua District",
+            "Set(neighbourhood)": [
+                "Waiopehu Ward",
+                "Kere Kere Ward",
+                "Miranui Ward",
+                "Levin Ward"
+            ]
+        },
+        "Hurunui District": {
+            "neighbourhood_group": "Hurunui District",
+            "Set(neighbourhood)": [
+                "East Ward",
+                "West Ward",
+                "South Ward"
+            ]
+        },
+        "Invercargill City": {
+            "neighbourhood_group": "Invercargill City",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Kaikoura District": {
+            "neighbourhood_group": "Kaikoura District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Kaipara District": {
+            "neighbourhood_group": "Kaipara District",
+            "Set(neighbourhood)": [
+                "Mangawhai-Kaiwaka Ward",
+                "Otamatea Ward",
+                "West Coast-Central Ward",
+                "Dargaville Ward"
+            ]
+        },
+        "Kapiti Coast District": {
+            "neighbourhood_group": "Kapiti Coast District",
+            "Set(neighbourhood)": [
+                "Paekākāriki-Raumati Ward",
+                "Ōtaki Ward ",
+                "Paraparaumu Ward",
+                "Waikanae Ward"
+            ]
+        },
+        "Kawerau District": {
+            "neighbourhood_group": "Kawerau District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Lower Hutt City": {
+            "neighbourhood_group": "Lower Hutt City",
+            "Set(neighbourhood)": [
+                "Eastern Ward",
+                "Harbour Ward",
+                "Western Ward",
+                "Wainuiomata Ward",
+                "Central Ward",
+                "Northern Ward"
+            ]
+        },
+        "Mackenzie District": {
+            "neighbourhood_group": "Mackenzie District",
+            "Set(neighbourhood)": [
+                "Pukaki Ward",
+                "Opuha Ward"
+            ]
+        },
+        "Manawatu District": {
+            "neighbourhood_group": "Manawatu District",
+            "Set(neighbourhood)": [
+                "Rural Ward",
+                "Feilding Ward"
+            ]
+        },
+        "Marlborough District": {
+            "neighbourhood_group": "Marlborough District",
+            "Set(neighbourhood)": [
+                "Marlborough Sounds Ward",
+                "Wairau-Awatere Ward",
+                "Blenheim Ward"
+            ]
+        },
+        "Masterton District": {
+            "neighbourhood_group": "Masterton District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Matamata-Piako District": {
+            "neighbourhood_group": "Matamata-Piako District",
+            "Set(neighbourhood)": [
+                "Matamata Ward",
+                "Te Aroha Ward",
+                "Morrinsville Ward"
+            ]
+        },
+        "Napier City": {
+            "neighbourhood_group": "Napier City",
+            "Set(neighbourhood)": [
+                "Ahuriri Ward",
+                "Nelson Park Ward",
+                "Taradale Ward",
+                "Onekawa-Tamatea Ward"
+            ]
+        },
+        "Nelson City": {
+            "neighbourhood_group": "Nelson City",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "New Plymouth District": {
+            "neighbourhood_group": "New Plymouth District",
+            "Set(neighbourhood)": [
+                "New Plymouth City Ward",
+                "North Ward",
+                "South-West Ward"
+            ]
+        },
+        "Palmerston North City": {
+            "neighbourhood_group": "Palmerston North City",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Porirua City": {
+            "neighbourhood_group": "Porirua City",
+            "Set(neighbourhood)": [
+                "Northern Ward/Pukerua ki te Raki",
+                "Western Ward/Titahi Rangituhi Porirua ki te uru",
+                "Eastern Ward/Pāuatahanui ki te uunga mai o te ra"
+            ]
+        },
+        "Queenstown-Lakes District": {
+            "neighbourhood_group": "Queenstown-Lakes District",
+            "Set(neighbourhood)": [
+                "Queenstown-Wakatipu Ward",
+                "Wanaka Ward",
+                "Arrowtown Ward"
+            ]
+        },
+        "Rangitikei District": {
+            "neighbourhood_group": "Rangitikei District",
+            "Set(neighbourhood)": [
+                "Central Ward",
+                "Northern Ward",
+                "Southern Ward"
+            ]
+        },
+        "Rotorua District": {
+            "neighbourhood_group": "Rotorua District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Ruapehu District": {
+            "neighbourhood_group": "Ruapehu District",
+            "Set(neighbourhood)": [
+                "National Park Ward",
+                "Taumarunui Ward",
+                "Waimarino-Waiouru Ward",
+                "Ohura Ward"
+            ]
+        },
+        "Selwyn District": {
+            "neighbourhood_group": "Selwyn District",
+            "Set(neighbourhood)": [
+                "Selwyn Central Ward",
+                "Malvern Ward",
+                "Springs Ward",
+                "Ellesmere Ward"
+            ]
+        },
+        "South Taranaki District": {
+            "neighbourhood_group": "South Taranaki District",
+            "Set(neighbourhood)": [
+                "Taranaki Coastal Ward",
+                "Pātea Ward",
+                "Te Hāwera Ward",
+                "Eltham-Kaponga Ward"
+            ]
+        },
+        "South Waikato District": {
+            "neighbourhood_group": "South Waikato District",
+            "Set(neighbourhood)": [
+                "Putāruru Ward",
+                "Tokoroa Ward",
+                "Tirau Ward"
+            ]
+        },
+        "South Wairarapa District": {
+            "neighbourhood_group": "South Wairarapa District",
+            "Set(neighbourhood)": [
+                "Greytown Ward",
+                "Martinborough Ward",
+                "Featherston Ward"
+            ]
+        },
+        "Southland District": {
+            "neighbourhood_group": "Southland District",
+            "Set(neighbourhood)": [
+                "Mararoa Waimea Ward",
+                "Stewart Island/Rakiura Ward",
+                "Waiau Aparima Ward",
+                "Oreti Ward",
+                "Waihopai Toetoe Ward"
+            ]
+        },
+        "Stratford District": {
+            "neighbourhood_group": "Stratford District",
+            "Set(neighbourhood)": [
+                "Stratford Rural Ward",
+                "Stratford Urban Ward"
+            ]
+        },
+        "Tararua District": {
+            "neighbourhood_group": "Tararua District",
+            "Set(neighbourhood)": [
+                "South Tararua Ward",
+                "North Tararua Ward"
+            ]
+        },
+        "Tasman District": {
+            "neighbourhood_group": "Tasman District",
+            "Set(neighbourhood)": [
+                "Lakes-Murchison Ward",
+                "Moutere-Waimea Ward",
+                "Golden Bay Ward",
+                "Motueka Ward",
+                "Richmond Ward"
+            ]
+        },
+        "Taupo District": {
+            "neighbourhood_group": "Taupo District",
+            "Set(neighbourhood)": [
+                "Turangi-Tongariro Ward",
+                "Taupō Ward",
+                "Mangakino-Pouakani Ward",
+                "Taupō East Rural Ward"
+            ]
+        },
+        "Tauranga City": {
+            "neighbourhood_group": "Tauranga City",
+            "Set(neighbourhood)": [
+                "Te Papa-Welcome Bay Ward",
+                "Otumoetai-Pyes Pa Ward",
+                "Mount Maunganui-Papamoa Ward"
+            ]
+        },
+        "Thames-Coromandel District": {
+            "neighbourhood_group": "Thames-Coromandel District",
+            "Set(neighbourhood)": [
+                "Coromandel-Colville Ward",
+                "Mercury Bay Ward",
+                "Thames Ward",
+                "South Eastern Ward"
+            ]
+        },
+        "Timaru District": {
+            "neighbourhood_group": "Timaru District",
+            "Set(neighbourhood)": [
+                "Geraldine Ward",
+                "Timaru Ward",
+                "Pleasant Point-Temuka Ward"
+            ]
+        },
+        "Upper Hutt City": {
+            "neighbourhood_group": "Upper Hutt City",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Waikato District": {
+            "neighbourhood_group": "Waikato District",
+            "Set(neighbourhood)": [
+                "Awaroa ki Tuakau Ward",
+                "Newcastle Ward",
+                "Raglan Ward",
+                "Hukanui-Waerenga Ward",
+                "Whangamarino Ward",
+                "Eureka Ward",
+                "Huntly Ward",
+                "Onewhero-Te Akau Ward",
+                "Tamahere Ward",
+                "Ngaruawahia Ward"
+            ]
+        },
+        "Waimakariri District": {
+            "neighbourhood_group": "Waimakariri District",
+            "Set(neighbourhood)": [
+                "Kaiapoi-Woodend Ward",
+                "Rangiora-Ashley Ward",
+                "Oxford-Ohoka Ward"
+            ]
+        },
+        "Waimate District": {
+            "neighbourhood_group": "Waimate District",
+            "Set(neighbourhood)": [
+                "Pareora-Otaio-Makikihi Ward",
+                "Waimate Ward",
+                "Hakataramea-Waihaorunga Ward",
+                "Lower Waihao Ward"
+            ]
+        },
+        "Waipa District": {
+            "neighbourhood_group": "Waipa District",
+            "Set(neighbourhood)": [
+                "Cambridge Ward",
+                "Kakepuku Ward",
+                "Pirongia Ward",
+                "Maungatautari Ward",
+                "Te Awamutu Ward"
+            ]
+        },
+        "Wairoa District": {
+            "neighbourhood_group": "Wairoa District",
+            "Set(neighbourhood)": [
+                "Wairoa General Ward"
+            ]
+        },
+        "Waitaki District": {
+            "neighbourhood_group": "Waitaki District",
+            "Set(neighbourhood)": [
+                "Waihemo Ward",
+                "Corriedale Ward",
+                "Oamaru Ward",
+                "Ahuriri Ward"
+            ]
+        },
+        "Waitomo District": {
+            "neighbourhood_group": "Waitomo District",
+            "Set(neighbourhood)": [
+                "Waitomo Rural Ward",
+                "Te Kuiti Ward"
+            ]
+        },
+        "Wellington City": {
+            "neighbourhood_group": "Wellington City",
+            "Set(neighbourhood)": [
+                "Paekawakawa/Southern Ward",
+                "Wharangi/Onslow-Western Ward",
+                "Motukairangi/Eastern Ward",
+                "Pukehīnau/Lambton Ward",
+                "Takapū/Northern Ward"
+            ]
+        },
+        "Western Bay of Plenty District": {
+            "neighbourhood_group": "Western Bay of Plenty District",
+            "Set(neighbourhood)": [
+                "Maketu-Te Puke Ward",
+                "Katikati-Waihi Beach Ward",
+                "Kaimai Ward"
+            ]
+        },
+        "Westland District": {
+            "neighbourhood_group": "Westland District",
+            "Set(neighbourhood)": [
+                "Northern Ward",
+                "Hokitika Ward",
+                "Southern Ward"
+            ]
+        },
+        "Whakatane District": {
+            "neighbourhood_group": "Whakatane District",
+            "Set(neighbourhood)": [
+                "Whakatāne-Ōhope Ward ",
+                "Rangitāiki Ward ",
+                "Galatea-Murupara Ward",
+                "Tāneatua-Waimana Ward "
+            ]
+        },
+        "Whanganui District": {
+            "neighbourhood_group": "Whanganui District",
+            "Set(neighbourhood)": [
+                "Area Outside Ward"
+            ]
+        },
+        "Whangarei District": {
+            "neighbourhood_group": "Whangarei District",
+            "Set(neighbourhood)": [
+                "Whangarei Heads Ward",
+                "Hikurangi-Coastal Ward",
+                "Denby Ward",
+                "Bream Bay Ward",
+                "Okara Ward",
+                "Mangakahia-Maungatapere Ward"
+            ]
+        },
+        "Ōpōtiki District": {
+            "neighbourhood_group": "Ōpōtiki District",
+            "Set(neighbourhood)": [
+                "Waioeka-Waiotahi Ward",
+                "Opotiki Ward",
+                "Coast Ward"
+            ]
+        },
+        "Ōtorohanga District": {
+            "neighbourhood_group": "Ōtorohanga District",
+            "Set(neighbourhood)": [
+                "Kawhia-Tihiroa Ward",
+                "Kiokio-Korakonui Ward",
+                "Waipa Ward",
+                "Otorohanga Ward",
+                "Wharepuhunga Ward"
+            ]
+        }
+    }
+]
