@@ -1,64 +1,96 @@
-"""
-Internal-Pandas-Dataframe-Handling Schema
+import numpy as np
+import pandas as pd
 
-compatibility: Inside Airbnb listings-summary V.2 (exclusive)
-"""
+class ListingSchema:
+    """
+    Details the types and columns expected of a listings flie.
+    The purpose of this class is to handle file imports.
+    """
 
-from pandera.pandas import DataFrameModel, Field, dataframe_check
-from datetime import datetime
+    def __init__(self, filepath:str):
 
-from typing import Optional
+        self.filepath = filepath
 
-#NOTE: this is definitely too much for now, I will keep it here commented just in case
+        self.data_types = {
+            "id"                              : int,
+            "name"                            : str,
+            "host_id"                         : "Int64", # built-in int data types do not support nullification, pandas explicitly declared types are required here.
+            "host_name"                       : str,
+            "neighbourhood_group"             : "category",
+            "neighbourhood"                   : "category",
+            "latitude"                        : float,
+            "longitude"                       : float,
+            "room_type"                       : "category",
+            "price"                           : float,
+            "minimum_nights"                  : "Int64",
+            "number_of_reviews"               : int,
+            "reviews_per_month"               : float,
+            "calculated_host_listings_count"  : "Int64",
+            "availability_365"                : int,
+            "number_of_reviews_ltm"           : int,
+            "license"                         : str
+        }
+    
+        self.parse_dates = ["last_review"]
+    
+        self.empty = {
+            "string": pd.NA,
+            "float": np.nan,
+            "int64": np.nan,
+            "datetime": pd.NaT,
+        }
+    
+        self.na_values = {
+            "name":
+                [
+                    "",
+                    self.empty["string"]
+                ],
+            "host_id" :
+                [
+                    "",
+                    self.empty["int64"]
+                ],
+            "host_name" :
+                [
+                    "",
+                    self.empty["string"]
+                ],
+            "price":
+                [
+                    "",
+                    self.empty["float"]
+                ],
+            "minimum_nights":
+                [
+                    "",
+                    self.empty["int64"]
+                ],
+            "last_review":
+                [
+                    "",
+                    self.empty["datetime"]
+                ],
+            "reviews_per_month":
+                [
+                    "",
+                    self.empty["int64"]
+                ],
+            "calculated_host_listings_count":
+                [
+                    "",
+                    self.empty["int64"]
+                ],
+            "license":
+                [
+                    "",
+                    self.empty["string"
+                ]]
+            }
 
-# import pandas as pd
-# import pandera.typing as ptp
-# import json
-
-# DISTRICT_WARD_HIERARCHY: list
-
-# with open("src/main/lib/schema/neighbourhoods_heirarchy.json", encoding="utf-8") as neighbourhoods_heirarchy:
-#     DISTRICT_WARD_HIERARCHY = json.load(neighbourhoods_heirarchy)
-
-# listings summary v.2 schema
-
-#NOTE: this is definitely too much for now, I will keep it here commented just in case
-
-class ListingSchema(DataFrameModel):
-    id                              : Optional[int]       = Field(gt = 0) 
-    name                            : Optional[str]                     
-    host_id                         : Optional[int]       = Field(nullable = True, gt = 0, ) 
-    host_name                       : Optional[str]       = Field(nullable = True)
-    neighbourhood_group             : Optional[str]       
-    neighbourhood                   : Optional[str]       
-    latitude                        : Optional[float]     = Field(ge = -90, le = 90) 
-    longitude                       : Optional[float]     = Field(ge = -180, le = 180) 
-    room_type                       : Optional[str]       = Field(isin = ["Private room", "Entire home/apt", "Shared room", "Hotel room"]) 
-    price                           : Optional[float]     = Field(nullable = True, ge = 0)
-    minimum_nights                  : Optional[int]       = Field(nullable = True, ge = 1) 
-    number_of_reviews               : Optional[int]       = Field(ge = 0) 
-    last_review                     : Optional[datetime]  = Field(nullable = True)
-    reviews_per_month               : Optional[float]     = Field(nullable = True, gt = 0)
-    calculated_host_listings_count  : Optional[int]       = Field(nullable = True, ge = 1) 
-    availability_365                : Optional[int]       = Field(ge = 0) 
-    number_of_reviews_ltm           : Optional[int]       = Field(ge = 0) 
-    license                         : Optional[str]       = Field(nullable = True) 
-    # month_year                      : DatetimeIndex # TODO: reconfigure row-wise formatting to ISO-8601
-
-    #NOTE: this is definitely too much for now, I will keep it here commented just in case
-
-    # @dataframe_check
-    # def valid_neighbour_heirarchy(
-    #     cls,
-    #     data_frame: pd.DataFrame,
-    #     name = "valid_neighbour_heirarchy") -> ptp.Series[bool]:
-
-    #     """
-    #     check that ward belongs in district
-    #     """
-    #     return data_frame.apply(
-    #         lambda row: row["neighbourhood"] in DISTRICT_WARD_HIERARCHY.get(row["neighbourhood_group"], []),
-    #         axis = 1
-    #     )
-
-    #NOTE: this is definitely too much for now, I will keep it here commented just in case
+    def read_csv(self) -> pd.DataFrame:
+        return pd.read_csv(
+            filepath_or_buffer=self.filepath,
+            dtype=self.data_types,
+            parse_dates=self.parse_dates,
+            na_values=self.na_values)
