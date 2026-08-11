@@ -1,6 +1,6 @@
 import pandas as pd
 import pandera as pa
-from src.main.lib.schema.Schema import schema
+from main.lib.schema.data_schema import schema
 from datetime import datetime
 
 class SummaryStatistics:
@@ -81,7 +81,15 @@ class SummaryStatistics:
         range = last - first
             
         return (days, months, years, first, last, range)
+    
+    def key_stats(self, column:str) -> dict[str: int]:
+        """ Assuming that the row values are key-identifiers, returns the total occurences of each key.
+        """
+        
+        # for now, completely indistinguishable from string_stats
             
+        return self.string_stats(column)
+    
     def missing_values(self, column:str) -> int:
         """total number of missing values in that column"""
         return self.df[column].isna().sum()
