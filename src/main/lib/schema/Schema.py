@@ -72,7 +72,7 @@ schema = pa.DataFrameSchema({
         ),
     "minimum_nights"                    : pa.Column(
         int,
-        default=1 # this can be null, but default minimum nights is always 1. There may be blocked listings, whose minimum_nights can not be determined
+        nullable=True
         ),
     "number_of_reviews"                 : pa.Column(
         int
