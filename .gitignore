@@ -22,3 +22,7 @@ __pycache__/
 # test_code
 tests/
 run_tests.py
+
+# ignore raw data
+*.csv
+neighbourhoods.json
