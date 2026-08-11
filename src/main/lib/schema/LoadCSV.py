@@ -110,6 +110,12 @@ class CSVConcatenator:
         
         return self
     
+    def filter_rows(self, column_name, row_value):
+        self.current_csv = self.current_csv[self.current_csv[column_name].str.contains(
+            row_value, case=False, na=False
+        )]
+        return self
+    
     def create(self):
         
         self.dfs.append(self.current_csv)
