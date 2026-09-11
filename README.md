@@ -83,6 +83,10 @@ If the listing has no reviews, then the ```last_review``` and ```reviews_per_mon
 ### ```availability_365``` :
 The Airbnb calendar for a listing does not differentiate between a booked night vs an unavailable night, therefore these bookings have been counted as "unavailable". This serves to understate the Availability metric because popular listings will be "booked" rather than being "blacked out" by a host.
 
+## Missing Values
+
+
+
 ## Sources:
 
 - [Inside Airbnb - Datasets](https://insideairbnb.com/get-the-data/)
