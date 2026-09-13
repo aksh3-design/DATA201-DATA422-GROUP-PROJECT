@@ -1,6 +1,5 @@
 import pandas as pd
 import pandera as pa
-from src.main.lib.schema.data_schema import schema
 from datetime import datetime
 
 class SummaryStatistics:
