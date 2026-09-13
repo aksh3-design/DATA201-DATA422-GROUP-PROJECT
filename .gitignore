@@ -23,5 +23,3 @@ __pycache__/
 tests/
 run_tests.py
 *.csv
-
-share/

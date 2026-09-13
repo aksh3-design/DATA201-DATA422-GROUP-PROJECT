@@ -7,14 +7,9 @@ import numpy as np
 import pandas as pd
 import pandera.pandas as pa
 from datetime import datetime
-
 import json
-from pathlib import Path
 
-script_dir = Path(__file__).resolve().parent
-file_path = script_dir / "neighbourhoods_heirarchy.json"
-
-with open(file_path, 'r', encoding='utf-8') as file:
+with open("src/main/lib/schema/neighbourhoods_heirarchy.json", 'r', encoding='utf-8') as file:
     
     heirarchy = json.load(file)
     
@@ -47,12 +42,10 @@ schema = pa.DataFrameSchema({
         ),
     "neighbourhood_group"               : pa.Column(
         pa.Category,
-        coerce=True,
         checks=pa.Check.isin(neighbourhood_groups)
         ),
     "neighbourhood"                     : pa.Column(
         pa.Category,
-        coerce=True,
         checks=pa.Check.isin(neighbourhoods)
         ),
     "latitude"                          : pa.Column(

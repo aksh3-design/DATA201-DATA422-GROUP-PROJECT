@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
 
-# TODO convert to TOML (maybe)
-
 dtypes = {
     "id"                              : "Int64",
     "name"                            : str,
@@ -82,3 +80,60 @@ na_values = {
             empty[str
         ]]
 }
+
+def load_csv(filename:str):
+    """loads csv to spec"""
+    
+    df = pd.read_csv(
+        filepath_or_buffer=filename,
+        dtype=dtypes,
+        na_values=na_values
+    )
+    
+    df["neighbourhood"] = df["neighbourhood"].astype("category")
+    
+    df["last_review"] = pd.to_datetime(df["last_review"], format="ISO8601")
+    
+    df["month_year"] = pd.to_datetime(df["month_year"], format="ISO8601")
+    
+    return df
+
+class CSVConcatenator:
+    
+    def __init__(self):
+
+        self.dfs:list[pd.DataFrame] = []
+        self.current_csv:pd.DataFrame = None
+    
+    def concatenate(self):
+        return pd.concat(
+                    self.dfs,
+                    ignore_index=True
+                )
+    
+    def add_column(self, column_name:str, row_values:str):
+        self.current_csv[column_name] = row_values
+        
+        return self
+    
+    def load_csv(self, filename:str):
+        
+        df = pd.read_csv(
+            filepath_or_buffer=filename,
+            dtype=dtypes,
+            na_values=na_values)
+        
+        self.current_csv = df
+        
+        return self
+    
+    def filter_rows(self, column_name, row_value):
+        self.current_csv = self.current_csv[self.current_csv[column_name].str.contains(
+            row_value, case=False, na=False
+        )]
+        return self
+    
+    def create(self):
+        
+        self.dfs.append(self.current_csv)
+        
