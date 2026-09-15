@@ -8,24 +8,8 @@ import pandas as pd
 import pandera.pandas as pa
 from datetime import datetime
 
-import json
-from pathlib import Path
-
-# script_dir = Path(__file__).resolve().parent
-# file_path = script_dir / "neighbourhoods_heirarchy.json"
-
-# with open(file_path, 'r', encoding='utf-8') as file:
-    
-#     heirarchy = json.load(file)
-    
-#     neighbourhood_groups = list(heirarchy.keys())
-#     neighbourhoods = []
-    
-#     for neighbourhood_group in neighbourhood_groups:
-#         neighbourhoods += heirarchy[neighbourhood_group]
-
 dwelling_types = [
-    "All",
+    "ALL",
     "Apartment",
     "Boarding House",
     "Flat",
@@ -42,10 +26,11 @@ schema = pa.DataFrameSchema({
             ),
         "Dwelling Type"                     : pa.Column(
             pa.Category,
-            pa.Check.isin(dwelling_types)
+            pa.Check.isin(dwelling_types),
+            nullable=False
             ),
         "Number Of Beds"                    : pa.Column(
-            int,
+            pa.Category,
             nullable=True # null values indicate availability
             ),
         "Total Bonds"                       : pa.Column(
