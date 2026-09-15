@@ -16,22 +16,26 @@ with open(sa22019_table_path, 'r', encoding='utf-8') as file:
     
 def clean(data:pd.DataFrame):
 
+    initial_rows = data.shape[0]
+
+    print(f"{'num rows':10}|{'removed':10}| log")
+
     # ================================================================================
 
-    print("datetime datatype correction ...")
+    print(f"{data.shape[0]:10}|{initial_rows-data.shape[0]:10}| datetime datatype correction ...")
 
     data["TimeFrame"] = pd.to_datetime(data["TimeFrame"], format="ISO8601")
 
     # ================================================================================
     # remove -99 + NULL
 
-    print("removing invalid -99 location codes ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| removing invalid -99 location codes ...")
     
     data = data[~(data["Location Id"] == -99)] # not a valid SA22019 id num
 
     # ================================================================================
 
-    print("removing invalid NULL location codes ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| removing invalid NULL location codes ...")
 
     data = data[~(data["Location Id"] == "NULL")] # not a valid SA22019 id num
 
@@ -40,7 +44,7 @@ def clean(data:pd.DataFrame):
 
     # ================================================================================
 
-    print("parsing TA2019 and WARD2019 location names from SA2-2019 'Location Id' ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| parsing TA2019 and WARD2019 location names from SA2-2019 'Location Id' ...")
 
     data["TA2019"] = data["Location Id"].apply(parse_TA2019)
     data["WARD2019"] = data["Location Id"].apply(parse_WARD2019)
@@ -49,7 +53,7 @@ def clean(data:pd.DataFrame):
 
     # ================================================================================
 
-    print("parsing Number of Beds Categories ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| parsing Number of Beds Categories ...")
 
     data["Number Of Beds"] = data["Number Of Beds"].apply(parse_num_beds)
 
@@ -63,16 +67,16 @@ def clean(data:pd.DataFrame):
             "Median Rent"
             ]
 
-    print("drop columns:")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| drop columns:")
 
     for col in drop_columns:
-        print(f"\t - '{col}'")
+        print(f"{'':10}|{'':10}|\t - '{col}'")
 
     data = data.drop(columns=drop_columns)
 
     # ================================================================================
 
-    print("preparing columns dtypes for multiple imputation ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| preparing columns dtypes for multiple imputation ...")
     
     data = prep_col(data, "Log Std Dev Weekly Rent", float)
     data = prep_col(data, "Geometric Mean Rent", float)
@@ -84,7 +88,7 @@ def clean(data:pd.DataFrame):
 
     # ================================================================================
 
-    print("multiple imputation on remaining columns ...")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| multiple imputation on remaining columns ...")
 
     mice_data = sm.MICEData(data[[
         "Log_Std_Dev_Weekly_Rent",
@@ -98,7 +102,7 @@ def clean(data:pd.DataFrame):
 
     # ================================================================================
 
-    print("imputations complete!")
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| imputations complete!")
 
     data[[
         "Log_Std_Dev_Weekly_Rent",
