@@ -9,12 +9,8 @@ import pandera.pandas as pa
 from datetime import datetime
 
 import json
-from pathlib import Path
 
-script_dir = Path(__file__).resolve().parent
-file_path = script_dir / "neighbourhoods_heirarchy.json"
-
-with open(file_path, 'r', encoding='utf-8') as file:
+with open("src/data/neighbourhoods_heirarchy.json", 'r', encoding='utf-8') as file:
     
     heirarchy = json.load(file)
     
@@ -34,21 +30,6 @@ room_types = [
 schema = pa.DataFrameSchema({
     "id"                                : pa.Column(
         int
-        ),
-    "name"                              : pa.Column(
-        str
-        ),
-    "host_id"                           : pa.Column(
-        int
-        ),
-    "host_name"                         : pa.Column(
-        str,
-        nullable=True # this can be determined with host_id
-        ),
-    "neighbourhood_group"               : pa.Column(
-        pa.Category,
-        coerce=True,
-        checks=pa.Check.isin(neighbourhood_groups)
         ),
     "neighbourhood"                     : pa.Column(
         pa.Category,
@@ -84,14 +65,6 @@ schema = pa.DataFrameSchema({
     "number_of_reviews"                 : pa.Column(
         int
         ),
-    "last_review"                       : pa.Column(
-        "datetime",
-        nullable=True # if number of reviews is 0, missing value
-        ),
-    "reviews_per_month"                 : pa.Column(
-        float,
-        default=0 # if number of reviews is 0, division by zero gives Nan, thus default is 0
-        ),
     "calculated_host_listings_count"    : pa.Column(
         int,
         ),
@@ -100,10 +73,6 @@ schema = pa.DataFrameSchema({
         ),
     "number_of_reviews_ltm"             : pa.Column(
         int,
-        ),
-    "license"                           : pa.Column(
-        str,
-        nullable=True # idk what this does.
         ),
     "month_year"                        : pa.Column(
         "datetime"

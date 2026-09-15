@@ -1,4 +1,4 @@
-from src.main.lib.schema.listings.dtypes import dtypes, na_values
+from src.main.lib.schema.bonds.dtypes import dtypes, na_values
 import pandas as pd
 
 def load_csv(filename:str):
