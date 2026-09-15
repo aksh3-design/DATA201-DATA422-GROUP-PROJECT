@@ -6,7 +6,7 @@ import numpy as np
 dtypes = {
     "Location Id"                       : "Int64",
     "Dwelling Type"                     : "category",
-    "Number Of Beds"                    : "Int64",
+    "Number Of Beds"                    : str,
     "Total Bonds"                       : "Int64",
     "Active Bonds"                      : "Int64",
     "Closed Bonds"                      : "Int64",
@@ -31,8 +31,8 @@ empty = {
 na_values = {
     "TimeFrame"                         : empty["datetime"],
     "Location Id"                       : empty["Int64"],
-    "Dwelling Type"                     : empty["category"],
-    "Number Of Beds"                    : empty["Int64"],
+    # "Dwelling Type"                     : empty["category"], # this isn't empty in the datasets, surely they can't mess that up right?
+    "Number Of Beds"                    : empty[str],
     "Total Bonds"                       : empty["Int64"],
     "Active Bonds"                      : empty["Int64"],
     "Closed Bonds"                      : empty["Int64"],
