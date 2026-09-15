@@ -30,8 +30,7 @@ def clean(data:pd.DataFrame):
     # remove -99 + NULL
 
     print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| removing invalid -99 location codes ...")
-    
-    data = data[~(data["Location Id"] == -99)] # not a valid SA22019 id num
+    data = data[~(data["Location Id"] == "-99")] # not a valid SA22019 id num
 
     # ================================================================================
 
