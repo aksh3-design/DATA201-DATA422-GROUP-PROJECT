@@ -4,7 +4,7 @@ venv/
 pyvenv.cfg
 Include/
 Scripts/
-Lib/
+Lib/site-packages
 
 # Python cache
 __pycache__/
@@ -23,3 +23,7 @@ __pycache__/
 tests/
 run_tests.py
 *.csv
+*.zip
+*.yaml
+
+statsnz-geographic-areas-file-2019-CSV/
