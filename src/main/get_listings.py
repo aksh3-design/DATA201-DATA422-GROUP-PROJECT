@@ -12,7 +12,7 @@ def load_csv(filename:str):
     
     df["neighbourhood"] = df["neighbourhood"].astype("category")
     
-    df["last_review"] = pd.to_datetime(df["last_review"], format="ISO8601")
+    df["last_review"] = pd.to_datetime(df["last_review"], format="mixed", dayfirst=True, errors="coerce")
     
     df["month_year"] = pd.to_datetime(df["month_year"], format="ISO8601")
     
