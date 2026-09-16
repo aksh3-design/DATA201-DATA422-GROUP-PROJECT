@@ -6,6 +6,15 @@ import json
 import statsmodels.api as sm
 import numpy as np
 
+import configparser
+
+config = configparser.ConfigParser()
+
+config.read("src/data/data_range.ini")
+
+START_DATE = [config["daterange"]["start_date"]]
+END_DATE = [config["daterange"]["end_date"]]
+
 sa22019_table_path = "src/data/SA22019_TA2019_WARD2019.json"
 
 SA22019_TABLE = None
@@ -118,6 +127,12 @@ def clean(data:pd.DataFrame):
     print(data.columns)
 
     data = data.astype(dtype=dtypes)
+
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| filtering for date range {START_DATE} - {END_DATE} ...")
+
+    data = data[data["TimeFrame"].between(START_DATE[0], END_DATE[0])]
+
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| Writing ...")
 
     return data
 

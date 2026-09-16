@@ -4,6 +4,15 @@ from src.main.lib.schema.listings.dtypes import dtypes
 
 import statsmodels.api as sm
 import numpy as np
+import configparser
+
+config = configparser.ConfigParser()
+
+config.read("src/data/data_range.ini")
+
+START_DATE = [config["daterange"]["start_date"]]
+END_DATE = [config["daterange"]["end_date"]]
+
     
 def clean(data:pd.DataFrame):
 
@@ -72,6 +81,13 @@ def clean(data:pd.DataFrame):
     data.drop(columns=["room_type_Hotel_room", "room_type_Private_room", "room_type_Shared_room"], inplace=True)
 
     data = data.astype(dtype=dtypes)
+
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| filtering for date range {START_DATE} - {END_DATE} ...")
+    
+    data = data[data["month_year"].between(START_DATE[0], END_DATE[0])]
+
+    print(f"{data.shape[0]:10}|{data.shape[0]-initial_rows:10}| Writing ...")
+
 
     return data
 
