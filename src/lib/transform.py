@@ -17,7 +17,11 @@ def filter_row_by_value(data:pd.DataFrame, column:str, value:str, keep_matching=
         (pd.DataFrame): Transformed Data with filtered rows.
     """
 
-    data = data[~(data[column] == value)]
+    if keep_matching:
+        data = data[(data[column] == value)]
+    else:
+        data = data[~(data[column] == value)]
+
 
     return data
 
