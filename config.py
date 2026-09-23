@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-CONFIG_INI_PATH = "src/data/config.ini"
+CONFIG_INI_PATH = "config.ini"
 
 import configparser
 import json

@@ -1,10 +1,10 @@
 # Airbnb Listings Dataset Cleaning Utility.
 # More information in docs/listclean.md
 
-from src.main.lib.schema.listings.dtypes import dtypes
-from main.lib.transform import one_hot_encode
-from main.lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from main.lib.config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH
+from lib.schema.listings.dtypes import dtypes
+from lib.transform import one_hot_encode
+from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
+from config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH
 
 import pandas as pd
 import statsmodels.api as sm 

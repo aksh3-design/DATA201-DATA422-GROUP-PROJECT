@@ -1,10 +1,10 @@
 # Tenancy Bonds Dataset Cleaning Utility.
 # More information in docs/bondclean.md
 
-from src.main.lib.schema.bonds.dtypes import dtypes
-from main.lib.transform import filter_row_by_value, parse_column_entries, to_numerical_specific
-from main.lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from main.lib.config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE 
+from lib.schema.bonds.dtypes import dtypes
+from lib.transform import filter_row_by_value, parse_column_entries, to_numerical_specific
+from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
+from config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE 
 
 import pandas as pd
 import statsmodels.api as sm

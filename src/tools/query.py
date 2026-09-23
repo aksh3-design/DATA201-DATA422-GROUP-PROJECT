@@ -9,7 +9,7 @@ import tqdm
 
 # from koord_get import VectorResponse
 
-from src.main.lib.schema.listings.dtypes import dtypes, na_values
+from lib.schema.listings.dtypes import dtypes, na_values
 
 PROCESSES = 8
 CHUNKSIZE = 2

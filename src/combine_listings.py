@@ -1,5 +1,5 @@
-from src.main.lib.load.csvconcatenator import CSVConcatenator
-from src.main.lib.config import DATA_IN_PATH, DATA_OUT_PATH, NAMES, DATES
+from lib.csvconcatenator import CSVConcatenator
+from config import DATA_IN_PATH, DATA_OUT_PATH, NAMES, DATES
 
 def load_data(data_parser:CSVConcatenator, filename:str, date:str):
     """Adds csv data to CSVConcatenator.
