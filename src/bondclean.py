@@ -4,33 +4,10 @@
 from src.main.lib.schema.bonds.dtypes import dtypes
 from main.lib.transform import filter_row_by_value, parse_column_entries, to_numerical_specific
 from main.lib.log import print_clean_log, print_clean_cascade, print_clean_simple
+from main.lib.config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE 
 
 import pandas as pd
 import statsmodels.api as sm
-
-import json
-import configparser
-
-# gather configurations into global variables
-
-def get_SA22019_TA2019_WARD2019_table(filepath:str="src/data/SA22019_TA2019_WARD2019.json"):
-    """Generates lookup table to parse SA22019 codes to TA2019 and WARD2019 codes and names"""
-    with open(filepath, 'r', encoding='utf-8') as file:
-        
-        results = json.load(file)
-
-    return results
-
-def get_daterange_from_config(filepath:str="src/data/data_range.ini"):
-    """Loades data date ranges from configuration files"""
-    config = configparser.ConfigParser()
-
-    config.read(filepath)
-
-    return ([config["daterange"]["start_date"]], [config["daterange"]["end_date"]])
-
-SA22019_TABLE = get_SA22019_TA2019_WARD2019_table()
-START_DATE, END_DATE = get_daterange_from_config() 
 
 # clean the dataset
 
@@ -107,7 +84,7 @@ def clean(data:pd.DataFrame):
     for column in mice_columns.keys():
         temp_mice_column_names.append(column.replace(" ", "_"))
     
-    data.columns = data.columns.str.replace(" ", "_") 
+    data.columns = data.columns.str.replace(" ", "_") # statsmodels library does not support spaces in column names
 
     # run mice on columns ============================================================
 
@@ -130,7 +107,7 @@ def clean(data:pd.DataFrame):
 
     print_clean_log(data, initial_rows, f"filtering for date range {START_DATE} - {END_DATE} ...")
 
-    data = data[data["TimeFrame"].between(START_DATE[0], END_DATE[0])]
+    data = data[data["TimeFrame"].between(START_DATE, END_DATE)]
 
     # filter for entrise in Christchurch City ========================================
 
@@ -219,8 +196,8 @@ if __name__ == "__main__":
     from pathlib import Path
 
     filename = "Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv"
-    filepath = Path(f"./data/{filename}")
-    fileout = Path(f"./out/{filename}")
+    filepath = Path(f"{DATA_IN_PATH}{filename}")
+    fileout = Path(f"{DATA_OUT_PATH}{filename}")
 
     data = None
 

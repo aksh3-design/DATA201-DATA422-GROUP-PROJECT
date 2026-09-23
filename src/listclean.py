@@ -4,23 +4,10 @@
 from src.main.lib.schema.listings.dtypes import dtypes
 from main.lib.transform import one_hot_encode
 from main.lib.log import print_clean_log, print_clean_cascade, print_clean_simple
+from main.lib.config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH
 
 import pandas as pd
-import statsmodels.api as sm
-
-import configparser
-
-# gather configurations into global variables
-
-def get_daterange_from_config(filepath:str="src/data/data_range.ini"):
-    """Loades data date ranges from configuration files"""
-    config = configparser.ConfigParser()
-
-    config.read(filepath)
-
-    return ([config["daterange"]["start_date"]], [config["daterange"]["end_date"]])
-
-START_DATE, END_DATE = get_daterange_from_config() 
+import statsmodels.api as sm 
     
 def clean(data:pd.DataFrame):
 
@@ -111,7 +98,7 @@ def clean(data:pd.DataFrame):
 
     print_clean_log(data, initial_rows, f"filtering for date range {START_DATE} - {END_DATE} ...")
     
-    data = data[data["month_year"].between(START_DATE[0], END_DATE[0])]
+    data = data[data["month_year"].between(START_DATE, END_DATE)]
 
     print_clean_log(data, initial_rows, "Writing ...")
 
@@ -126,8 +113,8 @@ if __name__ == "__main__":
     from pathlib import Path
     
     filename = "listings_combined.csv"
-    filepath = Path(f"./data/{filename}")
-    fileout = Path(f"./out/{filename}")
+    filepath = Path(f"{DATA_IN_PATH}{filename}")
+    fileout = Path(f"{DATA_OUT_PATH}{filename}")
 
     data = None
 
