@@ -27,3 +27,20 @@ run_tests.py
 *.yaml
 
 statsnz-geographic-areas-file-2019-CSV/
+
+# !listings_oct.csv
+# !listings_nov.csv
+# !listings_dec.csv
+# !listings_jan.csv
+# !listings_feb.csv
+# !listings_mar.csv
+# !listings_apr.csv
+# !listings_may.csv
+# !listings_jun.csv
+# !listings_jul.csv
+
+!listings_combined.csv
+
+!out_2.csv
+
+!data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
