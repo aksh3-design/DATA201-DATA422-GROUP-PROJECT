@@ -4,7 +4,7 @@
 from lib.schema.bonds.dtypes import dtypes
 from lib.transform import filter_row_by_value, parse_column_entries, to_numerical_specific
 from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE 
+from config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE, BONDS_CLEAN_PATH, BONDS_RAW_PATH
 
 import pandas as pd
 import statsmodels.api as sm
@@ -54,10 +54,8 @@ def clean(data:pd.DataFrame):
     # remove missing location codes ==================================================
 
     print_clean_log(data, initial_rows, "removing missing location codes ...")
-    
     data = data.dropna(subset=["Location Id"])
     data["Location Id"] = data["Location Id"].astype("int64")
-
     # parse functions ================================================================
 
     print_clean_log(data, initial_rows, "parsing TA2019 and WARD2019 location names from SA2-2019 'Location Id' ...")
@@ -113,7 +111,7 @@ def clean(data:pd.DataFrame):
 
     print_clean_log(data, initial_rows, "Removing rows not in Christchurch City")
 
-    data = filter_row_by_value(data, "TA2019", "Christchurch City")
+    data = filter_row_by_value(data, "TA2019", "Christchurch City", keep_matching=True)
 
     print_clean_log(data, initial_rows, "Cleanup Complete.")
 
@@ -195,26 +193,20 @@ if __name__ == "__main__":
 
     from pathlib import Path
 
-    filename = "Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv"
-    filepath = Path(f"{DATA_IN_PATH}{filename}")
-    fileout = Path(f"{DATA_OUT_PATH}{filename}")
-
-    data = None
-
     print(f"{'num rows':10}|{'removed':10}| log")
 
     try:
         print_clean_simple("loading csv ...")
-        data = pd.read_csv(filepath, dtype={"Number Of Beds" : "string"}, keep_default_na=False) # NA is a category, not null
+        data = pd.read_csv(DATA_IN_PATH+BONDS_RAW_PATH, dtype={"Number Of Beds" : "string"}, keep_default_na=False) # NA is a category, not null
     except FileNotFoundError:
-        print_clean_simple(f"No such file or directory: '{filepath}'")
+        print_clean_simple(f"No such file or directory: '{DATA_IN_PATH+BONDS_RAW_PATH}'")
         exit()
 
     print_clean_simple("cleaning csv ...")
     data = clean(data)
 
     print_clean_simple("writing csv ...")
-    data.to_csv(f"{fileout}", index=False)
+    data.to_csv(f"{DATA_OUT_PATH+BONDS_CLEAN_PATH}", index=False)
 
     print_clean_simple("cleaning completed.")
 

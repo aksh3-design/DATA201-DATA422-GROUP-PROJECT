@@ -1,26 +1,19 @@
 import pandas as pd
-import multiprocessing as mp
-
-import multiprocessing as mp
 from pandarallel import pandarallel
 import time
 
-import tqdm
-
-# from koord_get import VectorResponse
-
-from lib.schema.listings.dtypes import dtypes, na_values
+from src.lib.schema.listings.dtypes import dtypes, na_values
 
 PROCESSES = 8
 CHUNKSIZE = 2
     
 def process_apply(x:pd.Series):
 
+    from config import API_KEY  
     from typing import Literal, Self
     import requests
     import json
 
-    KEY = ""
     LAYER = 123515
     RADIUS = 200
     MAX_RESULT = 1
@@ -99,7 +92,7 @@ def process_apply(x:pd.Series):
     longitude = x["longitude"]
     latitude = x["latitude"]
 
-    query_obj = VectorResponse(KEY, LAYER)
+    query_obj = VectorResponse(API_KEY, LAYER)
     url = query_obj.get_url(longitude, latitude)
     query_obj.query(url)
 
@@ -133,7 +126,7 @@ def main():
     
     # load dataset
     
-    data = pd.read_csv("cleaned_listing_data.csv", dtype=dtypes, na_values=na_values)
+    data = pd.read_csv("out/listings_combined.csv", dtype=dtypes, na_values=na_values)
     data["SA22026_code"] = 0
     data["SA22026_name"] = ""
     

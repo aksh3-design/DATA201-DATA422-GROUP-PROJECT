@@ -1,6 +1,7 @@
 import requests
 import json
 from typing import Literal, Self
+from config import API_KEY
 
 class VectorResponse():
 
@@ -72,10 +73,8 @@ class VectorResponse():
 
 if __name__ == "__main__":
 
-    key = None
-
     query_object = VectorResponse(
-        key,
+        API_KEY,
         123515
     )
 
@@ -83,48 +82,3 @@ if __name__ == "__main__":
 
     name = query_object.query(url).get_name()
     code = query_object.get_code()
-
-
-# Example 200 Response
-
-# {
-#     "vectorQuery": {
-#         "layers": {
-#             "123515": {
-#                 "type": "FeatureCollection",
-#                 "crs": {
-#                     "type": "name",
-#                     "properties": {
-#                         "name": "EPSG:4326"
-#                     }
-#                 },
-#                 "features": [
-#                     {
-#                         "type": "Feature",
-#                         "properties": {
-#                             "SA22026_V1_00": "321302",
-#                             "SA22026_V1_00_NAME": "Prestons Park",
-#                             "SA22026_V1_00_NAME_ASCII": "Prestons Park",
-#                             "LAND_AREA_SQ_KM": 2.62419668,
-#                             "AREA_SQ_KM": 2.62419668,
-#                             "Shape_Length": 6991.465506881636,
-#                             "Shape_Area": 2624196.6907962393
-#                         },
-#                         "distance": 0,
-#                         "id": 4506
-#                     }
-#                 ],
-#                 "field_names": [
-#                     "SA22026_V1_00",
-#                     "SA22026_V1_00_NAME",
-#                     "SA22026_V1_00_NAME_ASCII",
-#                     "LAND_AREA_SQ_KM",
-#                     "AREA_SQ_KM",
-#                     "Shape_Length",
-#                     "Shape_Area"
-#                 ]
-#             }
-#         }
-#     }
-# }    
-

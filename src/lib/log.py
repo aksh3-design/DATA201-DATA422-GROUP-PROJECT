@@ -24,4 +24,9 @@ def print_clean_cascade(messages:list[str], indent=4):
     for message in messages:
         print(f"{'':10}|{'':10}|{indent*' '}- {message}")
 
+def print_bordered(message:str):
+    print("\n========================================")
+    print(message.upper())
+    print("========================================\n")
+
 print_clean_log.calls = 0
