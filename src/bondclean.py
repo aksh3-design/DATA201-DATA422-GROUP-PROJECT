@@ -54,10 +54,8 @@ def clean(data:pd.DataFrame):
     # remove missing location codes ==================================================
 
     print_clean_log(data, initial_rows, "removing missing location codes ...")
-    
     data = data.dropna(subset=["Location Id"])
     data["Location Id"] = data["Location Id"].astype("int64")
-
     # parse functions ================================================================
 
     print_clean_log(data, initial_rows, "parsing TA2019 and WARD2019 location names from SA2-2019 'Location Id' ...")
@@ -113,7 +111,7 @@ def clean(data:pd.DataFrame):
 
     print_clean_log(data, initial_rows, "Removing rows not in Christchurch City")
 
-    data = filter_row_by_value(data, "TA2019", "Christchurch City")
+    data = filter_row_by_value(data, "TA2019", "Christchurch City", keep_matching=True)
 
     print_clean_log(data, initial_rows, "Cleanup Complete.")
 
