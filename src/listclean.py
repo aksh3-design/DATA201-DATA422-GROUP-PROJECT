@@ -4,7 +4,7 @@
 from lib.schema.listings.dtypes import dtypes
 from lib.transform import one_hot_encode
 from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH
+from config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH, AIRBNB_RAW_PATH, AIRBNB_CLEAN_PATH
 
 import pandas as pd
 import statsmodels.api as sm 
@@ -110,28 +110,20 @@ def clean(data:pd.DataFrame):
 
 if __name__ == "__main__":
 
-    from pathlib import Path
-    
-    filename = "listings_combined.csv"
-    filepath = Path(f"{DATA_IN_PATH}{filename}")
-    fileout = Path(f"{DATA_OUT_PATH}{filename}")
-
-    data = None
-
     print(f"{'num rows':10}|{'removed':10}| log")
 
     try:
         print_clean_simple("loading csv ...")
-        data = pd.read_csv(filepath)
+        data = pd.read_csv(DATA_IN_PATH+AIRBNB_RAW_PATH)
     except FileNotFoundError:
-        print_clean_simple(f"No such file or directory: '{filepath}'")
+        print_clean_simple(f"No such file or directory: '{DATA_IN_PATH+AIRBNB_RAW_PATH}'")
         exit()
 
     print_clean_simple("cleaning csv ...")
     data = clean(data)
 
     print_clean_simple("writing csv ...")
-    data.to_csv(f"{fileout}", index=False)
+    data.to_csv(f"{DATA_OUT_PATH+AIRBNB_CLEAN_PATH}", index=False)
 
     print_clean_simple("cleaning completed.")
 

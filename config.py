@@ -1,6 +1,8 @@
 # Collection of functions which loads variables from configfiles
 
 import pandas as pd
+import src.lib.schema.bonds.dtypes as bonds
+import src.lib.schema.listings.dtypes as listings
 
 CONFIG_INI_PATH = "config.ini"
 
@@ -16,6 +18,23 @@ DATA_OUT_PATH = config["dirpath"]["out"]
 
 START_DATE = pd.to_datetime(config["daterange"]["start_date"], format="ISO8601")
 END_DATE = pd.to_datetime(config["daterange"]["end_date"], format="ISO8601")
+
+
+def load_csv(filepath_or_buffer, dtype, na_values):
+    try:
+        return pd.read_csv(filepath_or_buffer=filepath_or_buffer, dtype=dtype, na_values=na_values)
+    except FileNotFoundError:
+        print(f"Warning. {filepath_or_buffer} not found or does not exist.")
+
+AIRBNB_RAW_PATH = config["data.airbnb"]["raw"]
+BONDS_RAW_PATH = config["data.bonds"]["raw"]
+AIRBNB_CLEAN_PATH = config["data.airbnb"]["clean"]
+BONDS_CLEAN_PATH = config["data.bonds"]["clean"]
+
+AIRBNB_RAW = load_csv(DATA_IN_PATH+AIRBNB_RAW_PATH, listings.dtypes,  listings.na_values)
+BONDS_RAW = load_csv(DATA_IN_PATH+BONDS_RAW_PATH, bonds.dtypes,  bonds.na_values)
+AIRBNB_CLEAN = load_csv(DATA_IN_PATH+AIRBNB_CLEAN_PATH, listings.dtypes,  listings.na_values)
+BONDS_CLEAN = load_csv(DATA_IN_PATH+BONDS_CLEAN_PATH, bonds.dtypes,  bonds.na_values)
 
 API_KEY = config["api"]["key"]
 
