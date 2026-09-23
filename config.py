@@ -17,6 +17,8 @@ DATA_OUT_PATH = config["dirpath"]["out"]
 START_DATE = pd.to_datetime(config["daterange"]["start_date"], format="ISO8601")
 END_DATE = pd.to_datetime(config["daterange"]["end_date"], format="ISO8601")
 
+API_KEY = config["api"]["key"]
+
 # For combine_listings.py
 
 NAMES = config["listings"]["names"].split()

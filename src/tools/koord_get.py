@@ -1,6 +1,7 @@
 import requests
 import json
 from typing import Literal, Self
+from config import API_KEY
 
 class VectorResponse():
 
@@ -72,10 +73,8 @@ class VectorResponse():
 
 if __name__ == "__main__":
 
-    key = None
-
     query_object = VectorResponse(
-        key,
+        API_KEY,
         123515
     )
 
