@@ -49,9 +49,9 @@ def to_numerical_specific(data:pd.DataFrame, column:str, type):
     """Converts numerical columns to 'type'
 
     Args:
-        data (pd.DataFrame): Pandas dataframe
-        column (str): column name
-        type (_type_): literal, float or int.
+        data (pd.DataFrame): Pandas dataframe.
+        column (str): Column name.
+        type (_type_): Literal, float or int.
 
     Returns:
         (pd.Datafram): Transformed data with column as type: 'type'.
@@ -59,5 +59,22 @@ def to_numerical_specific(data:pd.DataFrame, column:str, type):
 
     data[column] = pd.to_numeric(data[column], errors='coerce')
     data[column] = data[column].astype(type)
+
+    return data
+
+def one_hot_encode(data:pd.DataFrame, column:str, dtype=int, axis=1):
+    """One-Hot encodes a categorical column and appends dummy columns to end of dataset
+
+    Args:
+        data (pd.DataFrame): Pandas dataframe.
+        column (str): Column name.
+        dtype (_type_): Datatype for the dummy columns. Defaults to int.
+        axis (int, optional): The axis to concatenate along. Defaults to 1.
+
+    Returns:
+        (pd.Dataframe): Data with concatenated, one-hot encoded columns for given categorical column.
+    """
+
+    data = pd.concat([data, pd.get_dummies(data[[column]], dtype=dtype)], axis=axis)
 
     return data
