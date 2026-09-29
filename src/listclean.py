@@ -4,7 +4,7 @@
 from lib.schema.listings.dtypes import dtypes
 from lib.transform import one_hot_encode
 from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH, AIRBNB_RAW_PATH, AIRBNB_CLEAN_PATH
+from config import START_DATE, END_DATE, DATA_IN_PATH, DATA_OUT_PATH, AIRBNB_RAW_NAME, AIRBNB_CLEAN_NAME
 
 import pandas as pd
 import statsmodels.api as sm 
@@ -114,16 +114,16 @@ if __name__ == "__main__":
 
     try:
         print_clean_simple("loading csv ...")
-        data = pd.read_csv(DATA_IN_PATH+AIRBNB_RAW_PATH)
+        data = pd.read_csv(DATA_IN_PATH+AIRBNB_RAW_NAME)
     except FileNotFoundError:
-        print_clean_simple(f"No such file or directory: '{DATA_IN_PATH+AIRBNB_RAW_PATH}'")
+        print_clean_simple(f"No such file or directory: '{DATA_IN_PATH+AIRBNB_RAW_NAME}'")
         exit()
 
     print_clean_simple("cleaning csv ...")
     data = clean(data)
 
     print_clean_simple("writing csv ...")
-    data.to_csv(f"{DATA_OUT_PATH+AIRBNB_CLEAN_PATH}", index=False)
+    data.to_csv(f"{DATA_OUT_PATH+AIRBNB_CLEAN_NAME}", index=False)
 
     print_clean_simple("cleaning completed.")
 

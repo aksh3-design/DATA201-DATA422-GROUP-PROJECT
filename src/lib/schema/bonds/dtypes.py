@@ -10,7 +10,7 @@ dtypes = {
     "Total Bonds"                       : "Int64",
     "Active Bonds"                      : "Int64",
     "Closed Bonds"                      : "Int64",
-    "Geometric Mean Rent"               : float,
+    "Median Rent"               : float,
     "Log Std Dev Weekly Rent"           : float
 }
 

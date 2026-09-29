@@ -9,7 +9,7 @@ CHUNKSIZE = 2
     
 def process_apply(x:pd.Series):
 
-    from config import API_KEY  
+    from config import API_KEY
     from typing import Literal, Self
     import requests
     import json
@@ -134,9 +134,6 @@ def main():
         "SA22026_code" : int,
         "SA22026_name" : str
      })
-    
-    # split_data = split_dataframe(data, 2)
-    # rows = [f"{','.join(data.columns)}\n"] 
 
     pandarallel.initialize(progress_bar=True)
 
@@ -146,40 +143,12 @@ def main():
 
     data.to_csv("out.csv")
 
-    # pd.DataFrame(columns=data.columns).astype(data.dtypes)
-    
-    # user inputs API key
-    
-    # pool = mp.Pool(processes=PROCESSES)
-    # for row in tqdm.tqdm(pool.imap(process, split_data, chunksize=CHUNKSIZE), total=len(split_data)):
-        # print(row)
-        # rows.append(data.to_csv(index=False, header=False, lineterminator="\n"))
-    
-    # with open("out.csv", "w") as file:
-        # file.write("".join(rows))
-    
-    # pool.close()
-    # pool.join()
-    
-    
     data = pd.read_csv("out.csv", dtype=dtypes, na_values=na_values, index_col=False)    
 
-    hours = (end_time - start_time) // 60
+    minutes = (end_time - start_time) // 60
     seconds = (end_time - start_time) % 60
 
-    print(f"\n\n{int(hours)} hours, {int(seconds)} seconds ...")
-
-    # merging parts processed by different processes
-    # parts = pd.concat(pool_results, axis=0)
-    
-    # print(parts)
-    
-    # # merging newly calculated parts to data
-    # data = pd.concat([data, parts], axis=1)
-    
-    # pdt.assert_series_equal(parts["id"], data["id"])
-    
-    # print(data)
+    print(f"\n\n{int(minutes)} minutes, {int(seconds)} seconds ...")
 
 if __name__ == "__main__":
 
