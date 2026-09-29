@@ -19,7 +19,7 @@ The files provided are for 'private-sector' bonds. The data is reported by geogr
 | ```Total Bonds```                     | ```int```      |             |            | Number of bonds lodged at some point in the period.  Note random rounding is applied to this value.
 | ```Active Bonds```                    | ```int```      |             |            | Total number of bonds active at the end of the period.  Note random rounding is applied to this value.
 | ```Closed Bonds```                    | ```float```    |             |            | Number of bonds closed at some point in the period.  Note random rounding is applied to this value.
-| ```Median Rent```                     | ```float```    |             |            | The geometric mean is calculated by multiplying values together and taking the nth root of the result. When a variable is log-normally distributed (a common distribution for variables that must be greater than 0) the geometric mean will closely approximate the median.
+| ```Geometric Mean Rent```             | ```float```    |             |            | The geometric mean is calculated by multiplying values together and taking the nth root of the result. When a variable is log-normally distributed (a common distribution for variables that must be greater than 0) the geometric mean will closely approximate the median.
 | ```Log Std Dev Weekly Rent```         | ```float```    |             | ```yes```  | Sample standard deviation of natural logarithm weekly rent of bonds lodged within the period.
 | ```TA2019```                          | ```str```      | ```yes```   | ```yes```  | TA2019 Name value, mapped to by SA2-2019 codes
 | ```WARD2019```                        | ```list[str]```|             | ```yes```  | WARD2019 Name values, mapped to by SA2-2019 codes
@@ -38,13 +38,19 @@ It is assumed that this is some sort of Market Rent API error code that was retu
 Tenancy Services Database. This can be asserted by plotting the frequency of occurences over time and noticing
 the jump in frequency during  periods of [data migration](https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/).
 
-![error-code-occurences-over-time](../src/data/figures/99-code-occurences-over-time.png)
+![error-code-occurences-over-time](../../../../data/figures/99-code-occurences-over-time.png)
 
 #
 
 #### ```NULL```
 
 The best assumption is that these are anonymised lodgings with Tenancy Services mentioned In the [privacy statement](./bonds_dict.md) given by MBIE.
+
+#
+
+#### Conclusion
+These rows were removed as they represent a very small proportion of the data, and imputation may be difficult due
+to the amount of SA2-2019 codes that exist.
 
 #
 
@@ -74,6 +80,13 @@ plotting occurrences of missing statistics over time produces the following figu
 
 It is inperceivable on this graph however note that there is no variation between each statistic. ```Log Std Dev Weekly Rent``` is always 0 in the cases that these statistics are missing or identical with no variation.
 
+#### Takeaway
+
+```Geometric Mean Rent```, ```Upper Quartile Rent```, ```Lower Quartile Rent```, ```Median Rent```, and```Log Std Dev Weekly Rent``` are all missing at random.
+
+#### Imputation
+
+missing values of ```Log Std Dev Weekly Rent``` and ```Geometric Mean Rent``` where chosen to be imputed and retained in the cleaned dataset. The other statistical values are to be left out to prevent overly reinforcing bias in the data
 
 ### ```Log Std Dev Weekly Rent``` 
 
@@ -98,14 +111,6 @@ Privacy is protected by the following mechanisms:
    - it is rounded to the second closest multiple of three with a probability of one-third (applied approximately one-third of the time).
 
 The random rounding protects against the recalculation of small counts from differencing large counts and retains almost all of the statistical properties of the table by adding only a little noise to the larger counts.  Note also that each value in a table is rounded independently, including the totals. This means that the marginal totals can differ slightly from the corresponding sum of the rows or columns, i.e. if the columns or rows in a table are added, they will not always equal the total given. 
-
-## Missing Values
-
-```Geometric Mean Rent```, ```Upper Quartile Rent```, ```Lower Quartile Rent```, ```Median Rent```, and```Log Std Dev Weekly Rent``` are all missing at random.
-
-missing values of ```Log Std Dev Weekly Rent``` and ```Geometric Mean Rent``` where chosen to be imputed and retained in the cleaned dataset. The other statistical values are to be left out to prevent overly reinforcing bias in the data
-
-```Location Id``` with a value of ```-99``` or ```NULL``` were also removed as these rows represent a very small proportion of the data, and mice imputation is impossible due to the amount columns required to one-hot encode SA2-2019 codes.
 
 ## Sources:
 

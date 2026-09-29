@@ -20,7 +20,10 @@ of different cities and countries around the world.
 | ```room_type```                       | ```string```   | yes         |            | Categorises rooms into the different types, ```"Private room"```, ```"Entire home/apt"```, ```"Shared room"```, and ```"Hotel room"```.
 | ```price```                           | ```currency``` |             |            | daily price in local currency. Note, $ sign may be used despite locale.
 | ```minimum_nights```                  | ```integer```  |             |            | minimum number of night stay for the listing (calendar rules may be different).
-| ```month_year```                      | ```integer```  |             | yes        | The scraping date of the listing
+| ```number_of_reviews```               | ```integer```  |             |            | The number of reviews the listing has.
+| ```calculated_host_listings_count```  | ```integer```  |             | yes        | The number of listings the host has in the current scrape, in the city/region geography.
+| ```availability_365```                | ```integer```  |             | yes        | avaliability_x. The availability of the listing x days in the future as determined by the calendar. Note a listing may be available because it has been booked by a guest or blocked by the host.
+| ```number_of_reviews_ltm```           | ```integer```  |             | yes        | The number of reviews the listing has (in the last 12 months)
 
 ## In the case of the New Zealand Dataset, and other clarifications
 
@@ -57,6 +60,9 @@ Private rooms are great for when you prefer a little privacy, and still value a 
 
 #### __Shared rooms__
 Shared rooms are for when you don't mind sharing a space with others. When you book a shared room, you'll be sleeping in a space that is shared with others and share the entire space with other people. Shared rooms are popular among flexible travelers looking for new friends and budget-friendly stays.
+
+### ```availability_365``` :
+The Airbnb calendar for a listing does not differentiate between a booked night vs an unavailable night, therefore these bookings have been counted as "unavailable". This serves to understate the Availability metric because popular listings will be "booked" rather than being "blacked out" by a host.
 
 ## Sources:
 

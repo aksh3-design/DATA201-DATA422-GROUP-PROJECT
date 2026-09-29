@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+# TODO convert to TOML (maybe)
+
 dtypes = {
     "id"                              : "Int64",
     "neighbourhood"                   : "category",
