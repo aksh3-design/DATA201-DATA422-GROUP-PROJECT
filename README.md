@@ -75,4 +75,5 @@ By default, generated figures are saved to the ```.out/``` directory.
 ## Credits
 
 [Statistical Area 2 2026 by Stats NZ](https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/) is licensed under CC BY 4.0
+
 [Geographic Areas File by Stats NZ](https://datafinder.stats.govt.nz/table/98778-geographic-areas-file-2019/) is licensed under CC BY 4.0
