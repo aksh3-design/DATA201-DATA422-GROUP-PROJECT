@@ -71,3 +71,8 @@ py src\join.py
 This script takes ```./data/listings_combined_sa22026.csv.csv``` and ```./data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026_cleaned.csv```,
 joins them on date and location, and outputs a number of statistics on price for Airbnb Listings in Christchurch.
 By default, generated figures are saved to the ```.out/``` directory.
+
+## Credits
+
+[Statistical Area 2 2026 by Stats NZ](https://datafinder.stats.govt.nz/layer/123515-statistical-area-2-2026/) is licensed under CC BY 4.0
+[Geographic Areas File by Stats NZ](https://datafinder.stats.govt.nz/table/98778-geographic-areas-file-2019/) is licensed under CC BY 4.0
