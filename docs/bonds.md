@@ -1,3 +1,9 @@
+# Cleaning Tenancy Services Rental Bond Data
+
+## Data Dictionary for Raw Tenancy Services Rental Bond Datasets
+
+[Data Dictionary](../src/lib/schema/bonds/bonds_dict.md)
+
 ## Data Dictionary for Cleaned Tenancy Services Rental Bond Datasets
 
 The [Tenancy Services](https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/) website provides detailed quarterly data on rental bonds within New Zealand.

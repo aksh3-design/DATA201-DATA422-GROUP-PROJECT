@@ -15,11 +15,14 @@ config.read(CONFIG_INI_PATH)
 DATA_IN_PATH = config["dirpath"]["in"]
 DATA_OUT_PATH = config["dirpath"]["out"]
 
+VERBOSE = int(config["config"]["verbose"]) # 1 or 0
+
 def load_csv(filepath_or_buffer, dtype, na_values):
     try:
         return pd.read_csv(filepath_or_buffer=filepath_or_buffer, dtype=dtype, na_values=na_values)
     except FileNotFoundError:
-        print(f"Warning. {filepath_or_buffer} not found or does not exist.")
+        if VERBOSE:
+            print(f"Warning. {filepath_or_buffer} not found or does not exist.")
 
 AIRBNB_RAW_NAME = config["data.airbnb"]["raw"]
 BONDS_RAW_NAME = config["data.bonds"]["raw"]

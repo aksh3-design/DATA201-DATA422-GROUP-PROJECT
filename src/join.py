@@ -1,8 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-airbnb = pd.read_csv("data/out_2.csv")
-bonds = pd.read_csv("out/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv")
+# TODO: move these filepaths to congif.ini. (maybe, possibly not necessary)
+
+airbnb = pd.read_csv("data/listings_combined_sa22026.csv")
+bonds = pd.read_csv("data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026_cleaned.csv")
 
 airbnb["month_year"] = pd.to_datetime(airbnb["month_year"])
 bonds["TimeFrame"] = pd.to_datetime(bonds["TimeFrame"])
@@ -28,7 +30,7 @@ bonds_all = bonds_all[
     [
         "SA22026_code",
         "quarter",
-        "Geometric Mean Rent",
+        "Median Rent",
         "Total Bonds",
         "Active Bonds",
         "Closed Bonds"
@@ -46,8 +48,8 @@ print("Merged rows:", len(merged))
 
 print()
 print(
-    "Missing Geometric Mean Rent price:",
-    merged["Geometric Mean Rent"].isna().sum()
+    "Missing Median Rent price:",
+    merged["Median Rent"].isna().sum()
 )
 
 print()
@@ -62,7 +64,7 @@ print(
             "SA22026_code",
             "SA22026_name",
             "price",
-            "Geometric Mean Rent",
+            "Median Rent",
             "Total Bonds"
         ]
     ].head(10).to_string(index=False)
@@ -80,7 +82,7 @@ print("Number of observations:", len(central))
 print("Median Airbnb price: $", median_price)
 
 merged["long_term_nightly"] = (
-    merged["Geometric Mean Rent"] / 7
+    merged["Median Rent"] / 7
 )
 
 merged["price_gap"] = (
