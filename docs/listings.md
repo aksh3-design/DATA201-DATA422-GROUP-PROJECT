@@ -1,3 +1,9 @@
+# Cleaning Inside Airbnb Listings Data
+
+# Data Dictionary for Raw Cleaned Inside Airbnb Datasets
+
+[Data Dictionary](../src/lib/schema/listings/listings_dict.md)
+
 # Data Dictionary for Cleaned Inside Airbnb Datasets
 
 The [Inside Airbnb](https://insideairbnb.com/get-the-data/) website compiles listing data for a number

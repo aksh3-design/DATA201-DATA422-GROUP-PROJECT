@@ -15,16 +15,59 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install require
 pip install - r requirements.txt
 ```
 
-## Implementations
+## Usage
 
-[Cleaning InsideAirbnb Listings Data](tools/listclean.md)
+### Combining InsideAirbnb Listings Datasets
 
-[Cleaning TenancyServices Rental Bond Data](tools/bondclean.md)
+```
+py src\combine_listings.py
+```
 
-## Documentation
+The default output filename is ```./out/listings_combined.csv``` defined in ```config.ini```.
 
-## About The Data
+### Statistics
 
-[InsideAirbnb](src/main/lib/schema/listings/listings_dict.md)
+```
+py src\reviews_per_month.py
+```
 
-[TenancyServices](src/main/lib/schema/bonds/bonds_dict.md)
+This script takes ```./data/listings_combined.csv```
+
+Calculates and outputs a number of statistics on reviews for Airbnb Listings in Christchurch.
+By default, generated figures are saved to the ```.out/``` directory.
+
+### [Cleaning InsideAirbnb Listings Data](docs/listings.md)
+
+```
+py src\listclean.py
+```
+
+This script takes ```./data/listings_combined.csv```
+
+The default output filename is ```./out/listings_combined_cleaned.csv``` defined in ```config.ini```.
+
+### [Cleaning TenancyServices Rental Bond Data](docs/bonds.md)
+
+```
+py src\bondclean.py
+```
+
+The default output filename is ```./out/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026_cleaned.csv.csv``` defined in ```config.ini```.
+
+### Koordinates Querying
+
+```
+py src\query.py
+```
+
+Place you Koordinates API key into the config.ini file, under ```[config]```.
+
+### Dataset Joining
+
+```
+py src\join.py
+```
+
+This script takes ```./data/listings_combined_sa22026.csv.csv``` and ```./data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026_cleaned.csv```,
+joins them on date and location, and outputs a number of statistics on price for Airbnb Listings in Christchurch.
+By default, generated figures are saved to the ```.out/``` directory.
