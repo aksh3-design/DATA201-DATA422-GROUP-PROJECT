@@ -1,10 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from src.lib.log import log
+from src.lib.plots import plot_box_plot
+from config import LISTINGS_SA22026_PATH, BONDS_CLEANED_PATH, JOINED_PATH, DATA_FIG
 # TODO: move these filepaths to congif.ini. (maybe, possibly not necessary)
 
-airbnb = pd.read_csv("data/listings_combined_sa22026.csv")
-bonds = pd.read_csv("data/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026_cleaned.csv")
+airbnb = pd.read_csv(f"{LISTINGS_SA22026_PATH}")
+bonds = pd.read_csv(f"{BONDS_CLEANED_PATH}")
 
 airbnb["month_year"] = pd.to_datetime(airbnb["month_year"])
 bonds["TimeFrame"] = pd.to_datetime(bonds["TimeFrame"])
@@ -43,19 +46,19 @@ merged = airbnb.merge(
     how="left"
 )
 
-print("Airbnb rows:", len(airbnb))
-print("Merged rows:", len(merged))
+log("Airbnb rows:", len(airbnb))
+log("Merged rows:", len(merged))
 
-print()
-print(
+log()
+log(
     "Missing Median Rent price:",
     merged["Median Rent"].isna().sum()
 )
 
-print()
-print("Example Christchurch Central:")
+log()
+log("Example Christchurch Central:")
 
-print(
+log(
     merged[
         merged["SA22026_code"] == 326600
     ][
@@ -76,10 +79,10 @@ central = merged[
 
 median_price = central["price"].median()
 
-print()
-print("Christchurch Central")
-print("Number of observations:", len(central))
-print("Median Airbnb price: $", median_price)
+log()
+log("Christchurch Central")
+log("Number of observations:", len(central))
+log("Median Airbnb price: $", median_price)
 
 merged["long_term_nightly"] = (
     merged["Median Rent"] / 7
@@ -94,16 +97,16 @@ gap_data = merged.dropna(
     subset=["price_gap"]
 ).copy()
 
-print()
-print(
+log()
+log(
     "Number of Airbnb observations with rental data:",
     len(gap_data)
 )
 
-print()
-print("Example price gaps:")
+log()
+log("Example price gaps:")
 
-print(
+log(
     gap_data[
         [
             "SA22026_code",
@@ -139,10 +142,10 @@ location_gap_median = (
     )
 )
 
-print()
-print("Locations with the largest median price gaps:")
+log()
+log("Locations with the largest median price gaps:")
 
-print(
+log(
     location_gap_median
     .head(10)
     .sort_values("median", ascending=False)
@@ -174,32 +177,18 @@ plot_data["SA22026_name"] = pd.Categorical(
     ordered=True
 )
 
-plot_data.boxplot(
-    column="price_gap",
-    by="SA22026_name",
-    vert=False,
-    figsize=(10, 7)
+plot_box_plot(
+    plot_data,
+    "price_gap",
+    "SA22026_name",
+    False,
+    (10, 7),
+    "Distribution of Airbnb Price Gaps for Top 10 Locations",
+    "",
+    "Price Gap ($ per night)",
+    "Christchurch Location",
+    DATA_FIG+"Distribution of Airbnb Price Gaps for Top 10 Locations"
 )
-
-plt.title(
-    "Distribution of Airbnb Price Gaps for Top 10 Locations"
-)
-
-plt.suptitle("")
-
-plt.xlabel(
-    "Price Gap ($ per night)"
-)
-
-plt.ylabel(
-    "Christchurch Location"
-)
-
-plt.tight_layout()
-
-plt.savefig("out/Distribution of Airbnb Price Gaps for Top 10 Locations")
-
-plt.show()
 
 airbnb_counts = (
     airbnb
@@ -251,19 +240,19 @@ location_counts = location_counts.sort_values(
     ascending=False
 )
 
-print()
-print("Airbnb vs Rental Properties:")
+log()
+log("Airbnb vs Rental Properties:")
 
-print(
+log(
     location_counts
     .head(20)
     .to_string(index=False)
 )
 
 merged.to_csv(
-    "out/airbnb_bonds_merged.csv",
+    JOINED_PATH,
     index=False
 )
 
-print()
-print("Saved: airbnb_bonds_merged.csv")
+log()
+log("Saved: airbnb_bonds_merged.csv")

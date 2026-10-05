@@ -1,8 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
-from config import AIRBNB_RAW, DATA_OUT_PATH, REVIEWS_RESULTS, REVIEWS_NUMBER, REVIEWS_TOPTEN, REVIEWS_TOPTWENTY, REVIEWS_HIGHEST 
-from lib.log import print_bordered
+from config import LISTINGS_COMBINED_PATH, DATA_FIG, DATA_OUT
+from lib.plots import plot_bar, plot_line
+from lib.log import print_bordered, log
+from lib.schema.listings.dtypes import dtypes, na_values
 
 # TODO: integrate statistics summary
 
@@ -60,58 +61,13 @@ def get_monthly_results(data:pd.DataFrame):
 
     return monthly_results
 
-def plot_line(
-        scalex:pd.DataFrame, 
-        scaley:pd.DataFrame, 
-        xlabel:str, 
-        ylabel:str, 
-        title:str, 
-        show:bool=True, 
-        save:bool=True, 
-        save_path:str="",
-        figsize:tuple[int, int]=(10, 6), 
-        xticks_rotation:int=45, 
-        marker:str='o'
-        ):
-
-    plt.figure(figsize=figsize)
-    plt.plot(scalex, scaley, marker=marker)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.title(title)
-    plt.xticks(rotation=xticks_rotation)
-    plt.tight_layout()
-    if save: plt.savefig(save_path)
-    if show: plt.show()
-
-def plot_bar(
-        y,
-        width,
-        xlabel:str,
-        ylabel:str,
-        title:str,
-        figsize:tuple[int, int],
-        show:bool=True,
-        save:bool=True,
-        save_path:str="",
-        xticks_rotation:int=45
-        ):
-    plt.figure(figsize=figsize)
-    plt.barh(y, width)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.title(title)
-    plt.xticks(rotation=xticks_rotation)
-    plt.tight_layout()
-    if save: plt.savefig(save_path)
-    if show: plt.show()
 
 if __name__ == "__main__":
 
     # 1. LOAD THE COMBINED CHRISTCHURCH DATASET
 
-    data = AIRBNB_RAW
-    print(f"Dataset loaded successfully.\nTotal records: {len(data)}")
+    data = pd.read_csv(LISTINGS_COMBINED_PATH, dtype=dtypes, na_values=na_values)
+    log(f"Dataset loaded successfully.\nTotal records: {len(data)}")
 
     # 3. ANALYSE HIGHEST REVIEWS FOR EACH MONTH
     # 4. CREATE A RESULTS TABLE    
@@ -119,11 +75,11 @@ if __name__ == "__main__":
 
     monthly_results = get_monthly_results(data)
     results = pd.DataFrame(monthly_results)
-    results.to_csv(DATA_OUT_PATH+REVIEWS_RESULTS, index=False)
+    results.to_csv(DATA_OUT+"highest_reviews_monthly_results", index=False)
 
     print_bordered("MONTHLY HIGHEST REVIEW RESULTS")
-    print(results.to_string(index=False))
-    print(f"\nMonthly results saved to: {DATA_OUT_PATH+REVIEWS_RESULTS}")
+    log(results.to_string(index=False))
+    log(f"\nMonthly results saved to: {DATA_OUT}highest_reviews_monthly_results")
 
     plot_line( # 6. PLOT HIGHEST NUMBER OF REVIEWS BY MONTH
         results["month"],
@@ -131,7 +87,7 @@ if __name__ == "__main__":
         "Month",
         "Highest Number of Reviews",
         "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to June 2026",
-        save_path=DATA_OUT_PATH+REVIEWS_NUMBER
+        save_path=DATA_FIG+"highest_number_of_airbnb_reviews_in_christchurch"
         )    
 
     plot_line( # 7. PLOT TOP 10% REVIEW CUTOFF BY MONTH
@@ -140,7 +96,7 @@ if __name__ == "__main__":
         "Month",
         "Top 10% Review Cutoff",
         "Top 10% Number of Reviews Cutoff in Christchurch\nOctober 2025 to June 2026",
-        save_path=DATA_OUT_PATH+REVIEWS_TOPTEN
+        save_path=DATA_FIG+"top_10_percent_number_of_reviews_cutoff_in_christchurch"
         )
 
     # 8. GET THE LATEST MONTH - JUNE 2026
@@ -150,30 +106,30 @@ if __name__ == "__main__":
     columns = [ "id", "name", "number_of_reviews", "neighbourhood", "room_type"]
 
     print_bordered("JUNE 2026 RESULTS")
-    print(f"June records: {len(june)}\nUnique June properties: {len(june)}")
+    log(f"June records: {len(june)}\nUnique June properties: {len(june)}")
 
     # 9. FIND HIGHEST REVIEWED PROPERTY IN JUNE
     
     highest_reviews_june = june["number_of_reviews"].max()
     highest_property_june = june[june["number_of_reviews"] == highest_reviews_june]
     
-    print(f"\nHighest number of reviews in June:\n{highest_reviews_june}\nHighest reviewed property in June:")
-    print(highest_property_june[columns].to_string(index=False))
+    log(f"\nHighest number of reviews in June:\n{highest_reviews_june}\nHighest reviewed property in June:")
+    log(highest_property_june[columns].to_string(index=False))
 
     # 10. FIND JUNE TOP 10%
     
     june_cutoff = june["number_of_reviews"].quantile(0.90)
     june_top_10 = june[june["number_of_reviews"] >= june_cutoff]
     
-    print(f"\nJune top 10% cutoff: {june_cutoff}")
-    print(f"\nNumber of properties in June top 10%: {len(june_top_10)}")
+    log(f"\nJune top 10% cutoff: {june_cutoff}")
+    log(f"\nNumber of properties in June top 10%: {len(june_top_10)}")
 
     # 11. FIND TOP 20 JUNE PROPERTIES
     
     top_20 = june[columns].sort_values("number_of_reviews",ascending=False).head(20)
 
     print_bordered("TOP 20 PROPERTIES - JUNE 2026")
-    print(top_20.to_string(index=False))
+    log(top_20.to_string(index=False))
 
     plot_bar( # 12. PLOT TOP 20 JUNE PROPERTIES
         top_20["name"],
@@ -183,7 +139,7 @@ if __name__ == "__main__":
         "Top 20 Christchurch Airbnb Properties by Number of Reviews\nJune 2026",
         xticks_rotation=0,
         figsize=(10, 8),
-        save_path=DATA_OUT_PATH+REVIEWS_TOPTWENTY
+        save_path=DATA_FIG+"top_20_christchurch_airbnb_properties"
         )
 
     plot_bar( # 13. BAR CHART - HIGHEST REVIEWS BY MONTH
@@ -193,5 +149,5 @@ if __name__ == "__main__":
         "Month",
         "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to June 2026",
         figsize=(10, 6),
-        save_path=DATA_OUT_PATH+REVIEWS_HIGHEST
+        save_path=DATA_FIG+"highest_number_of_airbnb_reviews_in_christchurch "
     )

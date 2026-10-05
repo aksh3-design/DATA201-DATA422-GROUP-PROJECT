@@ -1,5 +1,5 @@
 from lib.csvconcatenator import CSVConcatenator
-from config import DATA_IN_PATH, DATA_OUT_PATH, NAMES, DATES
+from config import get_listings, LISTINGS_COMBINED_PATH
 
 def load_data(data_parser:CSVConcatenator, filename:str, date:str):
     """Adds csv data to CSVConcatenator.
@@ -10,19 +10,17 @@ def load_data(data_parser:CSVConcatenator, filename:str, date:str):
         filename (str): Listings data filename.
         date (str): Publish date of listings data.
     """
-    data_parser.load_csv(f"{DATA_IN_PATH}{filename}").filter_rows("neighbourhood_group", "Christchurch City").add_column("month_year", f"{date}").create()
+    data_parser.load_csv(f"{filename}").filter_rows("neighbourhood_group", "Christchurch City").add_column("month_year", f"{date}").create()
 
 if __name__ == "__main__":
 
-    fileout = "listings_combined.csv"
-
     data_parser = CSVConcatenator(dtypes={}, na_values={})
 
-    for filename, date in zip(NAMES, DATES):
+    for filename, date in get_listings():
         try:
             load_data(data_parser, filename, date)
         except FileNotFoundError:
-            print(f"No such file or directory: '{DATA_IN_PATH}{filename}'")
+            print(f"No such file or directory: '{filename}'")
             exit()
 
     print("combining csv ...")
@@ -30,6 +28,6 @@ if __name__ == "__main__":
 
     print("writing csv ...")
 
-    data_parser.to_csv(f"{DATA_OUT_PATH}{fileout}", index=False, date_format="%Y-%m-%d")
+    data_parser.to_csv(f"{LISTINGS_COMBINED_PATH}", index=False, date_format="%Y-%m-%d")
     
     print("combining completed ...")

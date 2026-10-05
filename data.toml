@@ -1,0 +1,48 @@
+# 
+[path.dir]
+in="data/" # raw data
+out="out/" # processed data
+tmp="tmp/" # data to be processed
+fig="figures/"
+
+[path.location]
+name="src/data/SA22019_TA2019_WARD2019" # look up table for location codes
+type=".json"
+
+[path.airbnb]
+base_name="listings" 
+clean_ext="_cleaned"
+combine_ext="_combined"
+type=".csv"
+
+[path.airbnb.data] # data files for airbnb listings, file name/type detailed above.
+listings=[ # Name, Scrape Date
+# ["listings_oct", 2025-10-01],
+# ["listings_nov", 2025-11-01],
+# ["listings_dec", 2025-12-01],
+# ["listings_jan", 2026-01-01],
+# ["listings_feb", 2026-02-01],
+# ["listings_mar", 2026-03-01],
+# ["listings_apr", 2026-04-01],
+# ["listings_may", 2026-05-01],
+# ["listings_jun", 2026-06-01],
+["listings_jul", 2026-05-01],
+["listings_aug", 2026-06-01]
+]
+
+[path.airbnb.data.query] # query data
+base_name="listings_combined"
+query_ext="_sa22026_new_combined"
+type=".csv"
+
+[path.bonds]
+name="Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026"
+clean_ext="_cleaned"
+type=".csv"
+
+[path.joined]
+name="listings_and_bonds_joined"
+type=".csv"
+
+
+

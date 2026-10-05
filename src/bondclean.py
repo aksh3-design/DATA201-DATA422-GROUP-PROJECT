@@ -3,8 +3,8 @@
 
 from lib.schema.bonds.dtypes import dtypes
 from lib.transform import filter_row_by_value, parse_column_entries, to_numerical_specific
-from lib.log import print_clean_log, print_clean_cascade, print_clean_simple
-from config import DATA_IN_PATH, DATA_OUT_PATH, START_DATE, END_DATE, SA22019_TABLE, BONDS_CLEAN_NAME, BONDS_RAW_NAME
+from lib.log import print_clean_log, print_clean_cascade, print_clean_simple, log
+from config import BONDS_CLEANED_PATH, BONDS_PATH, START_DATE, END_DATE, SA22019_TABLE
 
 import pandas as pd
 import statsmodels.api as sm
@@ -193,20 +193,20 @@ if __name__ == "__main__":
 
     from pathlib import Path
 
-    print(f"{'num rows':10}|{'removed':10}| log")
+    log(f"{'num rows':10}|{'removed':10}| log")
 
     try:
         print_clean_simple("loading csv ...")
-        data = pd.read_csv(DATA_IN_PATH+BONDS_RAW_NAME, dtype={"Number Of Beds" : "string"}, keep_default_na=False) # NA is a category, not null
+        data = pd.read_csv(BONDS_PATH, dtype={"Number Of Beds" : "string"}, keep_default_na=False) # NA is a category, not null
     except FileNotFoundError:
-        print_clean_simple(f"No such file or directory: '{DATA_IN_PATH+BONDS_RAW_NAME}'")
+        print_clean_simple(f"No such file or directory: '{BONDS_PATH}'")
         exit()
 
     print_clean_simple("cleaning csv ...")
     data = clean(data)
 
     print_clean_simple("writing csv ...")
-    data.to_csv(f"{DATA_OUT_PATH+BONDS_CLEAN_NAME}", index=False)
+    data.to_csv(f"{BONDS_CLEANED_PATH}", index=False)
 
     print_clean_simple("cleaning completed.")
 

@@ -1,7 +1,6 @@
 import requests
 import json
 from typing import Literal, Self
-from config import API_KEY
 
 class VectorResponse():
 
@@ -70,15 +69,3 @@ class VectorResponse():
         datajson = data.response.json()
         
         return datajson["vectorQuery"]["layers"]["123515"]["features"][0]["properties"]["SA22026_V1_00_NAME"]
-
-if __name__ == "__main__":
-
-    query_object = VectorResponse(
-        API_KEY,
-        123515
-    )
-
-    url = query_object.get_url(172.57088, -43.47002)
-
-    name = query_object.query(url).get_name()
-    code = query_object.get_code()
