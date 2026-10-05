@@ -12,7 +12,7 @@
 Clone this repository.
 
 ```bash
-git clone https://github.com/aksh3-design/DATA201-DATA422-GROUP-PROJECT/tree/main .
+git clone https://github.com/aksh3-design/DATA201-DATA422-GROUP-PROJECT .
 ```
 
 Run ```setup.py```
