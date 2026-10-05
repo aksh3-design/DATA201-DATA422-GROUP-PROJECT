@@ -15,18 +15,17 @@ Clone this repository.
 git clone https://github.com/aksh3-design/DATA201-DATA422-GROUP-PROJECT .
 ```
 
-Run ```setup.py```
-
-```bash
-py setup.py
-```
-
-## Setup Alternatives
-
 Move this repository into a virtual environment. (You can do this by changing the root directory into a virtual environment).
 
 ```bash
 python -m venv .
+```
+
+Activate the virtual environment. 
+
+```bash
+Scripts/activate.bat # Windows
+source bin/activate # Linux/macOS
 ```
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required modules.
