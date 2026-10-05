@@ -129,7 +129,7 @@ if __name__ == "__main__":
     top_20 = june[columns].sort_values("number_of_reviews",ascending=False).head(20)
 
     print_bordered("TOP 20 PROPERTIES - JUNE 2026")
-    log(top_20.to_string(index=False))
+    log(top_20)
 
     plot_bar( # 12. PLOT TOP 20 JUNE PROPERTIES
         top_20["name"],

@@ -42,6 +42,6 @@ def log(*message:str):
     if not VERBOSE: return
      
     """equivalent to print"""
-    print(message)
+    print(*message)
 
 print_clean_log.calls = 0

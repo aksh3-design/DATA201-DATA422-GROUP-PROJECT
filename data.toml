@@ -32,7 +32,7 @@ listings=[ # Name, Scrape Date
 
 [path.airbnb.data.query] # query data
 base_name="listings_combined"
-query_ext="_sa22026_new_combined"
+query_ext="_sa22026"
 type=".csv"
 
 [path.bonds]

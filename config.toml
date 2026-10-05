@@ -7,5 +7,5 @@ key=""
 
 [config] 
 verbose=true # set to true to output to terminal
-savefig=false # set to true to save any matplotlib figures
-openfig=false # set to ture to open matplotfigs in a new window
+savefig=true # set to true to save any matplotlib figures
+openfig=true # set to ture to open matplotfigs in a new window
