@@ -49,3 +49,23 @@ statsnz-geographic-areas-file-2019-CSV/
 !out/Detailed-Quarterly-Tenancy-Q1-2020-Q3-2026.csv
 
 backup/*
+
+new configurations:
+  - config files now use native toml instead of ini.
+  - all code has been converted to use new configs
+
+logging:
+  - src/lib/log.py now take VERBOSE option from configs
+  - print() functions have been replaced with log() to conform to VERBOSE behaviour
+
+plots:
+  - plots have been extended to their own module.
+  - plots now take an OPENFIG and SAVEFIG option from config
+  - if SAVEFIG is true, then plots will be saved to the ./figures directory
+  - if OPENFIG is true, then plots will be opened in a new window
+
+directories:
+  - added new ./tmp directory for data that is in-between processes.
+
+run:
+  - run.py executes entire pipeline. data is passed via data.toml.
