@@ -86,7 +86,7 @@ if __name__ == "__main__":
         results["highest_reviews"],
         "Month",
         "Highest Number of Reviews",
-        "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to June 2026",
+        "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to August 2026",
         save_path=DATA_FIG+"highest_number_of_airbnb_reviews_in_christchurch"
         )    
 
@@ -95,59 +95,76 @@ if __name__ == "__main__":
         results["top_10_cutoff"],
         "Month",
         "Top 10% Review Cutoff",
-        "Top 10% Number of Reviews Cutoff in Christchurch\nOctober 2025 to June 2026",
+        "Top 10% Number of Reviews Cutoff in Christchurch\nOctober 2025 to August 2026",
         save_path=DATA_FIG+"top_10_percent_number_of_reviews_cutoff_in_christchurch"
         )
 
-    # 8. GET THE LATEST MONTH - JUNE 2026
-    
-    june = data[data["month_year"] == "2026-06-01"].copy()
+        # 8. GET THE LATEST MONTH AUTOMATICALLY
 
-    columns = [ "id", "name", "number_of_reviews", "neighbourhood", "room_type"]
+    latest_month = sorted(data["month_year"].unique())[-1]
+    latest_data = data[data["month_year"] == latest_month].copy()
 
-    print_bordered("JUNE 2026 RESULTS")
-    log(f"June records: {len(june)}\nUnique June properties: {len(june)}")
+    latest_date = pd.to_datetime(latest_month)
+    latest_label = latest_date.strftime("%B %Y")
 
-    # 9. FIND HIGHEST REVIEWED PROPERTY IN JUNE
-    
-    highest_reviews_june = june["number_of_reviews"].max()
-    highest_property_june = june[june["number_of_reviews"] == highest_reviews_june]
-    
-    log(f"\nHighest number of reviews in June:\n{highest_reviews_june}\nHighest reviewed property in June:")
-    log(highest_property_june[columns].to_string(index=False))
+    columns = ["id", "name", "number_of_reviews", "neighbourhood", "room_type"]
 
-    # 10. FIND JUNE TOP 10%
-    
-    june_cutoff = june["number_of_reviews"].quantile(0.90)
-    june_top_10 = june[june["number_of_reviews"] >= june_cutoff]
-    
-    log(f"\nJune top 10% cutoff: {june_cutoff}")
-    log(f"\nNumber of properties in June top 10%: {len(june_top_10)}")
+    print_bordered(f"{latest_label.upper()} RESULTS")
+    log(
+        f"{latest_label} records: {len(latest_data)}\n"
+        f"Unique {latest_label} properties: {latest_data['id'].nunique()}"
+    )
 
-    # 11. FIND TOP 20 JUNE PROPERTIES
-    
-    top_20 = june[columns].sort_values("number_of_reviews",ascending=False).head(20)
+    # 9. FIND HIGHEST REVIEWED PROPERTY IN LATEST MONTH
 
-    print_bordered("TOP 20 PROPERTIES - JUNE 2026")
+    highest_reviews = latest_data["number_of_reviews"].max()
+
+    highest_property = latest_data[
+        latest_data["number_of_reviews"] == highest_reviews
+    ]
+
+    log(
+        f"\nHighest number of reviews in {latest_label}:\n"
+        f"{highest_reviews}\n"
+        f"Highest reviewed property in {latest_label}:"
+    )
+
+    log(highest_property[columns].to_string(index=False))
+
+    # 10. FIND LATEST MONTH TOP 10%
+
+    latest_cutoff = latest_data["number_of_reviews"].quantile(0.90)
+
+    latest_top_10 = latest_data[
+        latest_data["number_of_reviews"] >= latest_cutoff
+    ]
+
+    log(f"\n{latest_label} top 10% cutoff: {latest_cutoff}")
+    log(
+        f"\nNumber of properties in {latest_label} top 10%: "
+        f"{len(latest_top_10)}"
+    )
+
+    # 11. FIND TOP 20 PROPERTIES IN LATEST MONTH
+
+    top_20 = (
+        latest_data[columns]
+        .sort_values("number_of_reviews", ascending=False)
+        .head(20)
+    )
+
+    print_bordered(f"TOP 20 PROPERTIES - {latest_label.upper()}")
     log(top_20)
 
-    plot_bar( # 12. PLOT TOP 20 JUNE PROPERTIES
+    # 12. PLOT TOP 20 PROPERTIES
+
+    plot_bar(
         top_20["name"],
         top_20["number_of_reviews"],
         "Number of Reviews",
         "Property",
-        "Top 20 Christchurch Airbnb Properties by Number of Reviews\nJune 2026",
+        f"Top 20 Christchurch Airbnb Properties by Number of Reviews\n{latest_label}",
         xticks_rotation=0,
         figsize=(10, 8),
         save_path=DATA_FIG+"top_20_christchurch_airbnb_properties"
-        )
-
-    plot_bar( # 13. BAR CHART - HIGHEST REVIEWS BY MONTH
-        results["month"],
-        results["highest_reviews"],
-        "Highest Number of Reviews",
-        "Month",
-        "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to June 2026",
-        figsize=(10, 6),
-        save_path=DATA_FIG+"highest_number_of_airbnb_reviews_in_christchurch "
     )
