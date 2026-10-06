@@ -26,8 +26,8 @@ listings=[ # Name, Scrape Date
 # ["listings_apr", 2026-04-01],
 # ["listings_may", 2026-05-01],
 # ["listings_jun", 2026-06-01],
-["listings_jul", 2026-05-01],
-["listings_aug", 2026-06-01]
+["listings_jul", 2026-07-01],
+["listings_aug", 2026-08-01]
 ]
 
 [path.airbnb.data.query] # query data
