@@ -1,8 +1,11 @@
 from src.lib.csvconcatenator import CSVConcatenator
 from src.lib.schema.listings.dtypes import dtypes, na_values
 from src.config import LISTINGS_SA22026_PATH, LISTINGS_PREPROCESSED_PATH, LISTINGS_COMBINED_PATH, LISTINGS_ALL, get_listings
+from src.lib.log import log
+
 import pandas as pd
 import os
+from pathlib import Path
 
 
 def load_data(data_parser: CSVConcatenator, filename: str, date: str):
@@ -17,19 +20,25 @@ def load_data(data_parser: CSVConcatenator, filename: str, date: str):
     
 def combine_pre_processed_data():
     
-    previous_path = LISTINGS_PREPROCESSED_PATH # data that has already been through query process
-    current_path = LISTINGS_SA22026_PATH # combine after querying
+    # LISTINGS_PREPROCESSED data that has already been through query process
+    # LISTINGS_SA22026_PATH combine after querying
     
+    filepath = Path(LISTINGS_PREPROCESSED_PATH)
+    
+    if not filepath.exists():
+        log(f"Preprocessed data not found at {LISTINGS_SA22026_PATH} ...")
+        return
+
     print("loading previous listings data ...")
     
-    if not os.path.exists(previous_path):
-        print(f"No such file or directory: '{previous_path}'")
+    if not os.path.exists(LISTINGS_PREPROCESSED_PATH):
+        print(f"No such file or directory: '{LISTINGS_PREPROCESSED_PATH}'")
         exit()
 
-    preprocessed_data = CSVConcatenator(dtypes=dtypes, na_values=na_values).load_csv(previous_path)
+    preprocessed_data = CSVConcatenator(dtypes=dtypes, na_values=na_values).load_csv(LISTINGS_PREPROCESSED_PATH)
     preprocessed_data.create()
 
-    all_data = preprocessed_data.load_csv(current_path)
+    all_data = preprocessed_data.load_csv(LISTINGS_SA22026_PATH)
     all_data.create()
 
     all_data:pd.DataFrame = all_data.concatenate()
