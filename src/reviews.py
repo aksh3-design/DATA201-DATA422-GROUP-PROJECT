@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     monthly_results = get_monthly_results(data)
     results = pd.DataFrame(monthly_results)
-    results.to_csv(DATA_OUT+"highest_reviews_monthly_results", index=False)
+    results.to_csv(DATA_OUT+"highest_reviews_monthly_results.csv", index=False)
 
     print_bordered("MONTHLY HIGHEST REVIEW RESULTS")
     log(results.to_string(index=False))
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         save_path=DATA_FIG+"top_10_percent_number_of_reviews_cutoff_in_christchurch"
         )
 
-        # 8. GET THE LATEST MONTH AUTOMATICALLY
+        # 8.GET THE LATEST MONTH AUTOMATICALLY
 
     latest_month = sorted(data["month_year"].unique())[-1]
     latest_data = data[data["month_year"] == latest_month].copy()
@@ -167,4 +167,15 @@ if __name__ == "__main__":
         xticks_rotation=0,
         figsize=(10, 8),
         save_path=DATA_FIG+"top_20_christchurch_airbnb_properties"
+    )
+    # 13. BAR CHART - HIGHEST REVIEWS BY MONTH
+
+    plot_bar(
+        results["month"],
+        results["highest_reviews"],
+        "Highest Number of Reviews",
+        "Month",
+        "Highest Number of Airbnb Reviews in Christchurch\nOctober 2025 to August 2026",
+        figsize=(10, 6),
+        save_path=DATA_FIG+"highest_reviews_by_month_bar"
     )
