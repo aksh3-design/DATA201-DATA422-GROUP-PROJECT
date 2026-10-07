@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     print_bordered("MONTHLY HIGHEST REVIEW RESULTS")
     log(results.to_string(index=False))
-    log(f"\nMonthly results saved to: {DATA_OUT}highest_reviews_monthly_results")
+    log(f"\nMonthly results saved to: {DATA_OUT}highest_reviews_monthly_results.csv")
 
     plot_line( # 6. PLOT HIGHEST NUMBER OF REVIEWS BY MONTH
         results["month"],
