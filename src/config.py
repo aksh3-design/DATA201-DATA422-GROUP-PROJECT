@@ -46,7 +46,7 @@ LISTINGS_COMBINED_PATH = DATA_TMP + __airbnb_basename + __airbnb_combine + __air
 LISTINGS_CLEANED_PATH = DATA_TMP + __airbnb_basename + __airbnb_combine + __airbnb_clean + __airbnb_type
 LISTINGS_PREPROCESSED_PATH = DATA_IN + __airbnb_basename + __airbnb_combine + __airbnb_clean + __airbnb_preprocessed + __airbnb_type 
 
-LISTINGS_ALL = DATA_TMP + __airbnb_basename + __airbnb_all + __airbnb_type
+LISTINGS_ALL = DATA_OUT + __airbnb_basename + __airbnb_all + __airbnb_type
 
 def get_listings():
     """generates listings names and scrapedate from ./data.toml file
@@ -71,7 +71,7 @@ __bonds_basename = __config_data["path"]["bonds"]["name"]
 __bonds_clean = __config_data["path"]["bonds"]["clean_ext"]
 __bonds_type = __config_data["path"]["bonds"]["type"]
 
-BONDS_CLEANED_PATH = DATA_TMP + __bonds_basename + __bonds_clean + __bonds_type
+BONDS_CLEANED_PATH = DATA_OUT + __bonds_basename + __bonds_clean + __bonds_type
 
 BONDS_PATH = DATA_IN + __bonds_basename + __bonds_type
 
