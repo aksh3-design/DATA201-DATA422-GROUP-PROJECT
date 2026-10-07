@@ -3,6 +3,8 @@
 import os
 from src.lib.log import print_bordered, log
 from src.combine_listings import combine_pre_processed_data
+from src.config import LISTINGS_SA22026_PATH
+from pathlib import Path
 
 # Pre processing steps
 
@@ -19,9 +21,6 @@ print_bordered("CLEANING TENANCY SERVICE BOND DATA ")
 os.system("py src\\bondclean.py")
 
 print_bordered("PARSE SA22026 CODES FROM LISTING CO-ORDINATES")
-
-from src.config import LISTINGS_SA22026_PATH
-from pathlib import Path
 
 filepath = Path(LISTINGS_SA22026_PATH)
 
