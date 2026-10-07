@@ -13,6 +13,8 @@ type=".json"
 base_name="listings" 
 clean_ext="_cleaned"
 combine_ext="_combined"
+preprocessed_ext="_preprocessed"
+all_ext="_all"
 type=".csv"
 
 [path.airbnb.data] # data files for airbnb listings, file name/type detailed above.

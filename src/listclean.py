@@ -14,7 +14,6 @@ def clean(data:pd.DataFrame):
     initial_rows = data.shape[0]
 
     drop_columns = [
-            "name",
             "host_id",
             "host_name",
             "neighbourhood_group",
@@ -33,7 +32,6 @@ def clean(data:pd.DataFrame):
         ]
 
     drop_after_mice = [
-        "number_of_reviews",
         "number_of_reviews_ltm",
         "availability_365",
         "calculated_host_listings_count"

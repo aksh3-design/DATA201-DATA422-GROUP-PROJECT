@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 
 from src.lib.log import log
 from src.lib.plots import plot_box_plot
-from config import LISTINGS_SA22026_PATH, BONDS_CLEANED_PATH, JOINED_PATH, DATA_FIG
+from config import LISTINGS_ALL, BONDS_CLEANED_PATH, JOINED_PATH, DATA_FIG
 # TODO: move these filepaths to congif.ini. (maybe, possibly not necessary)
 
-airbnb = pd.read_csv(f"{LISTINGS_SA22026_PATH}")
+airbnb = pd.read_csv(f"{LISTINGS_ALL}")
 bonds = pd.read_csv(f"{BONDS_CLEANED_PATH}")
 
 airbnb["month_year"] = pd.to_datetime(airbnb["month_year"])

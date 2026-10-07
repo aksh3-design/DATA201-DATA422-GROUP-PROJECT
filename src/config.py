@@ -38,10 +38,15 @@ SA22019_TABLE = _get_SA22019_TA2019_WARD2019_table()
 __airbnb_basename = __config_data["path"]["airbnb"]["base_name"]
 __airbnb_combine = __config_data["path"]["airbnb"]["combine_ext"]
 __airbnb_clean = __config_data["path"]["airbnb"]["clean_ext"]
+__airbnb_preprocessed = __config_data["path"]["airbnb"]["preprocessed_ext"]
+__airbnb_all = __config_data["path"]["airbnb"]["all_ext"]
 __airbnb_type = __config_data["path"]["airbnb"]["type"]
 
 LISTINGS_COMBINED_PATH = DATA_TMP + __airbnb_basename + __airbnb_combine + __airbnb_type
 LISTINGS_CLEANED_PATH = DATA_TMP + __airbnb_basename + __airbnb_combine + __airbnb_clean + __airbnb_type
+LISTINGS_PREPROCESSED_PATH = DATA_IN + __airbnb_basename + __airbnb_combine + __airbnb_clean + __airbnb_preprocessed + __airbnb_type 
+
+LISTINGS_ALL = DATA_TMP + __airbnb_basename + __airbnb_all + __airbnb_type
 
 def get_listings():
     """generates listings names and scrapedate from ./data.toml file

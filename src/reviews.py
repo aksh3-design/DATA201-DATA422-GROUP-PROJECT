@@ -1,6 +1,6 @@
 import pandas as pd
 
-from config import LISTINGS_COMBINED_PATH, DATA_FIG, DATA_OUT
+from config import LISTINGS_ALL, DATA_FIG, DATA_OUT
 from lib.plots import plot_bar, plot_line
 from lib.log import print_bordered, log
 from lib.schema.listings.dtypes import dtypes, na_values
@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
     # 1. LOAD THE COMBINED CHRISTCHURCH DATASET
 
-    data = pd.read_csv(LISTINGS_COMBINED_PATH, dtype=dtypes, na_values=na_values)
+    data = pd.read_csv(LISTINGS_ALL, dtype=dtypes, na_values=na_values)
     log(f"Dataset loaded successfully.\nTotal records: {len(data)}")
 
     # 3. ANALYSE HIGHEST REVIEWS FOR EACH MONTH
