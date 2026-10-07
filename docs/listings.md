@@ -15,11 +15,13 @@ of different cities and countries around the world.
 | ------------------------------------- | -------------- | :---------: | :--------: | ------------
 | ```id```                              | ```integer```  |             |            | Airbnb's unique identifier for the listing.
 | ```neighbourhood```                   | ```text```     | yes         | yes        | The neighbourhood as geocoded using the latitude and longitude against neighborhoods as defined by open or public digital shapefiles.
+| ```name```                            | ```string```   |             |            | Taken from the title of the Airbnb listing.
 | ```latitude```                        | ```numeric```  |             |            | Uses the World Geodetic System (WGS84) projection for latitude and longitude.
 | ```longitude```                       | ```numeric```  |             |            | Uses the World Geodetic System (WGS84) projection for latitude and longitude.
 | ```room_type```                       | ```string```   | yes         |            | Categorises rooms into the different types, ```"Private room"```, ```"Entire home/apt"```, ```"Shared room"```, and ```"Hotel room"```.
 | ```price```                           | ```currency``` |             |            | daily price in local currency. Note, $ sign may be used despite locale.
 | ```minimum_nights```                  | ```integer```  |             |            | minimum number of night stay for the listing (calendar rules may be different).
+| ```number_of_reviews```               | ```integer```  |             |            | The number of reviews the listing has.
 | ```month_year```                      | ```integer```  |             | yes        | The scraping date of the listing
 
 ## In the case of the New Zealand Dataset, and other clarifications

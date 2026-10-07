@@ -43,8 +43,10 @@ List only the filenames, omit extensions.
 
 Raw airbnb listings data must be pointed to with a scrape date in ISO8601-format, with the day set to 01.
 
-There are options for Tenancy Services rental bonds data, and you may also reconfigure the data-in and data-out directories 
-in ```data.toml``` as well.
+There are options for Tenancy Services rental bonds data, and you may also reconfigure the data-in and data-out directories
+
+If you have data that is already processed and you would like to include it in a new pipeline execution, save it under
+```data/listings_combined_cleaned_preprocessed.csv```.
 
 [See ```data.toml``` for more info.](data.toml)
 
