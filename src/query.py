@@ -79,7 +79,7 @@ def main():
 
     data.to_csv(LISTINGS_SA22026_PATH, index=False)
 
-    data = pd.read_csv(LISTINGS_SA22026_PATH, dtype=dtypes, na_values=na_values, index_col=False)    
+    data = pd.read_csv(LISTINGS_SA22026_PATH, dtype=dtypes, na_values=na_values, index=False)    
 
     minutes = (end_time - start_time) // 60
     seconds = (end_time - start_time) % 60

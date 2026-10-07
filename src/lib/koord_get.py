@@ -1,6 +1,7 @@
 import requests
 import json
 from typing import Literal, Self
+import time
 
 class VectorResponse():
 
@@ -46,6 +47,8 @@ class VectorResponse():
                 case 429: # too many attempts
                     self.status = 0
                     print(f"429 Too Many Attempts: try again {response.headers["Retry-After"]}")
+                    print(f"sleeping for {response.headers["Retry-After"]} seconds ... ")
+                    time.sleep(int(response.headers["Retry-After"]))
                 case _:
                     self.status = 0
                     print(json.dumps(response.json(), indent=4))
